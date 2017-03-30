@@ -8,7 +8,7 @@
 
 ```
 -- build-analysis  # 父模块
-    --build     # 发起构建, 执行测试案例的模块
+    --build     # 发起构建, 执行测试案例的模块, 实现可以参考 http://stackoverflow.com/questions/5141788/how-to-run-maven-from-java
     --analysis  # 分析构建结果, 生成报表数据的模块
     --web       # 提供web接口的模块
     --docs      # 项目文档模块

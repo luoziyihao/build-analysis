@@ -3,6 +3,7 @@ package com.coding.build.test;
 import java.util.Iterator;
 import java.util.Map;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import com.coding.build.builder.Builder;
@@ -11,6 +12,7 @@ import com.coding.build.builder.Target;
 import com.coding.build.executor.Executor;
 import com.coding.build.executor.ExecutorImpl;
 
+@Slf4j
 public class BuilderTest {
 
 	

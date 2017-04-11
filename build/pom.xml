@@ -68,12 +68,6 @@
   			<configuration>
   				<source>1.8</source>
   				<target>1.8</target>
-  				<archive>
-  					<manifest>
-  						<addClasspath>true</addClasspath>
-  						<mainClass>com/coding/build/App</mainClass>
-  					</manifest>
-  				</archive>
   			</configuration>
   		</plugin>
   	</plugins>

@@ -1,4 +1,4 @@
-package build;
+package com.coding.common.build;
 
 import java.util.Date;
 

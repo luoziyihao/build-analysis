@@ -1,4 +1,4 @@
-package build;
+package com.coding.common.build;
 
 public enum SpecificReason {
 	INVALID_FORMAT,

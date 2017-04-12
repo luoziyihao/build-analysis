@@ -1,6 +1,5 @@
-package com.coding.analysis;
+package com.coding.analysis.entity;
 
-import com.coding.common.build.Result;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -11,7 +10,6 @@ import java.util.List;
  */
 @Data
 @Accessors(fluent = true)
-public class MemberAnalysisInput {
-    private String qq;
-    private List<Result> results;
+public class AnalysisInput {
+    private List<MemberAnalysisInput> memberBuildInputs;
 }

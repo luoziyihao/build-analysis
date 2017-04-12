@@ -1,11 +1,6 @@
 package com.coding.common.build;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BuildResult {
 	
@@ -35,5 +30,9 @@ public class BuildResult {
 	public Iterator<String> getIds(){
 		return buildResultMapping.keySet().iterator();
 	}
-	
+
+	public Set<Map.Entry<String, List<Result>>> entrySet(){
+		return buildResultMapping.entrySet();
+	}
+
 }

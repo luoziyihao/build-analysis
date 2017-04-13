@@ -4,6 +4,6 @@ import com.coding.build.executor.Executor;
 
 public interface Builder {
 
-	public boolean build(Target target);
+	public boolean build(Group target);
 	public void setExecutor(Executor executor);
 }

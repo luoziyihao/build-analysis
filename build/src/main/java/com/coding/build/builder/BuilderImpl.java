@@ -17,7 +17,7 @@ public class BuilderImpl implements Builder{
 	}
 	
 	@Override
-	public boolean build(Target target) {
+	public boolean build(Group target) {
 		System.out.println("Going to build target: " + target);
 		if(executor != null){
 			try {

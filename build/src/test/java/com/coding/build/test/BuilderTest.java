@@ -8,7 +8,8 @@ import org.junit.Test;
 
 import com.coding.build.builder.Builder;
 import com.coding.build.builder.BuilderImpl;
-import com.coding.build.builder.Target;
+import com.coding.build.builder.Group;
+import com.coding.build.builder.Member;
 import com.coding.build.executor.Executor;
 import com.coding.build.executor.ExecutorImpl;
 
@@ -26,8 +27,13 @@ public class BuilderTest {
 		Builder bdr = new BuilderImpl();
 		Executor executor = new ExecutorImpl();
 		bdr.setExecutor(executor);
-		Target target = new Target("/telos/esuo/workspace/cjserver/pom.xml");
-		bdr.build(target);
+
+		Member testMember = new Member();
+		testMember.buildPath = "/Users/erlisuo/Documents/workspace/mvn-example/mvn-example/pom.xml";
+		testMember.id = "1";
+		Group group = new Group("group17");
+		
+		bdr.build(group);
 	}
 	
 	public void dumpMap(Map<String, String> map){

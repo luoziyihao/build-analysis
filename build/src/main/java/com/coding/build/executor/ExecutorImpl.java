@@ -11,7 +11,7 @@ import org.apache.maven.shared.invoker.InvocationResult;
 import org.apache.maven.shared.invoker.Invoker;
 import org.apache.maven.shared.invoker.MavenInvocationException;
 
-import com.coding.build.builder.Target;
+import com.coding.build.builder.Group;
 
 public class ExecutorImpl implements Executor{
 
@@ -22,9 +22,9 @@ public class ExecutorImpl implements Executor{
 	
 	
 	@Override
-	public boolean execute(Target target) throws MavenInvocationException, FileNotFoundException {
-		File targetPathFile = new File(target.buildPath);
-		if(targetPathFile == null || ! targetPathFile.exists()) throw new FileNotFoundException("Target file path does NOT exist. " + target.buildPath);
+	public boolean execute(Group target) throws MavenInvocationException, FileNotFoundException {
+		File targetPathFile = new File(target.getMember(0).buildPath);
+		if(targetPathFile == null || ! targetPathFile.exists()) throw new FileNotFoundException("Target file path does NOT exist. " + target.getMember(0).buildPath);
 		
 		InvocationRequest request = new DefaultInvocationRequest();
 		request.setPomFile( targetPathFile );

@@ -1,25 +1,35 @@
 package com.coding.analysis;
 
 import com.coding.analysis.entity.AnalysisInput;
+import com.coding.analysis.entity.MemberAnalysisInput;
+import com.coding.common.analysis.entity.AnalysisResult;
 import com.coding.common.analysis.entity.TestMemberInfo;
 import com.google.common.base.Preconditions;
+
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * Created by luoziyihao on 4/12/17.
  */
-public class ParserImpl implements Parser{
+public class ParserImpl implements Parser {
 
     @Override
-    public TestMemberInfo parse(AnalysisInput analysisInput) {
+    public AnalysisResult parse(AnalysisInput analysisInput) {
         Preconditions.checkNotNull(analysisInput);
-
-        analysisInput.memberBuildInputs().stream()
-                .map(memberAnalysisInput -> parseMemberAnalysisInput())
-
-        return null;
+        return new AnalysisResult()
+                .setTestMemberInfos(
+                        analysisInput.memberBuildInputs().stream()
+                                .map(parseMemberAnalysisInput())
+                                .collect(Collectors.toMap(
+                                        TestMemberInfo::getQq,
+                                        testMemberInfo -> testMemberInfo
+                                        )
+                                )
+                );
     }
 
-    private <R> R parseMemberAnalysisInput() {
+    private Function<? super MemberAnalysisInput, ? extends TestMemberInfo> parseMemberAnalysisInput() {
         return null;
     }
 

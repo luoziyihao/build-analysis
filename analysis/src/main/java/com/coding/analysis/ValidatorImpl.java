@@ -6,6 +6,7 @@ import com.coding.analysis.entity.ResultInput;
 import com.coding.analysis.entity.ResultIllegalReason;
 import com.coding.common.build.BuildResult;
 import com.coding.common.build.Result;
+import com.google.common.base.Preconditions;
 import strman.Strman;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class ValidatorImpl implements Validator {
 
     @Override
     public AnalysisInput validate(BuildResult buildResult) {
+        Preconditions.checkNotNull(buildResult);
         return new AnalysisInput()
                 .memberBuildInputs(
                         buildResult.entrySet()

@@ -3,7 +3,7 @@ package com.coding.analysis;
 import com.coding.analysis.entity.AnalysisInput;
 import com.coding.analysis.entity.MemberAnalysisInput;
 import com.coding.analysis.entity.ResultInput;
-import com.coding.analysis.entity.ResultState;
+import com.coding.analysis.entity.ResultIllegalReason;
 import com.coding.common.build.BuildResult;
 import com.coding.common.build.Result;
 import strman.Strman;
@@ -53,11 +53,10 @@ public class ValidatorImpl implements Validator {
             if (!result.success && result.specificReason == null) {
                 return resultInput
                         .legal(false)
-                        .resultState(ResultState.SPECIFIC_REASON_LOSS);
+                        .resultState(ResultIllegalReason.SPECIFIC_REASON_LOSS);
             }
             return resultInput
-                    .legal(true)
-                    .resultState(ResultState.LEGAL);
+                    .legal(true);
         };
     }
 
@@ -65,7 +64,7 @@ public class ValidatorImpl implements Validator {
         if (reference == null) {
             resultInput
                     .legal(false)
-                    .resultState(ResultState.PARAMETER_LOSS)
+                    .resultState(ResultIllegalReason.PARAMETER_LOSS)
                     .msg(Strman.append(field, " is null"));
 
             return true;

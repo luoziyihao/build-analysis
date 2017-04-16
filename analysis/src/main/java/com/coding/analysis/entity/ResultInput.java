@@ -12,6 +12,6 @@ import lombok.experimental.Accessors;
 public class ResultInput {
     private Result result;
     private boolean legal = false;
-    private ResultState resultState;
+    private ResultIllegalReason resultState;
     private String  msg = "";
 }

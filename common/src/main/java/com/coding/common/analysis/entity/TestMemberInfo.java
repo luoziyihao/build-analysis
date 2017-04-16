@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by luoziyihao on 4/12/17.
  */
-@Accessors(fluent = true)
+@Accessors(chain = true)
 @Data
 public class TestMemberInfo {
     private String qq;

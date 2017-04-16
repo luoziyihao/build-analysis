@@ -12,5 +12,5 @@ import java.util.List;
 @Data
 public class TestMemberInfo {
     private String qq;
-    private List<TestModuleInfo> moduleInfos;
+    private List<TestModuleInfo> testModuleInfos;
 }

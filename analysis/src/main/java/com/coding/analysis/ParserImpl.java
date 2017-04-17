@@ -56,7 +56,10 @@ public class ParserImpl implements Parser {
     }
 
     private Function<? super TestModuleInfo, ? extends TestModuleInfo> parserResult() {
-        return null;
+        return testModuleInfo -> {
+
+            return null;
+        };
     }
 }
 

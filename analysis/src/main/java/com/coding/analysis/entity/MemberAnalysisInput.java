@@ -1,6 +1,5 @@
 package com.coding.analysis.entity;
 
-import com.coding.common.build.Result;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

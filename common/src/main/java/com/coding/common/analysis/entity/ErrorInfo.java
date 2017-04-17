@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
  * Created by luoziyihao on 4/12/17.
  */
 @Data
-@Accessors(fluent = true)
+@Accessors(chain = true)
 public class ErrorInfo {
     private String message;
     private String type;

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by luoziyihao on 4/12/17.
  */
 @Data
-@Accessors(fluent = true)
+@Accessors(chain = true)
 public class TestSuiteInfo {
     private List<PropertyInfo> propertyInfos;
     private List<TestCaseInfo> testCaseInfos;

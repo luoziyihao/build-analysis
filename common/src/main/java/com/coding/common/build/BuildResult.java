@@ -11,6 +11,7 @@ public class BuildResult {
 	}
 	
 	public void addResultEntry(String id, String path, boolean success, String reason, Date buildTime, PomInfo pomInfo){
+		
 		Result newResult = new Result();
 		newResult.success(success);
 		newResult.specificReason(SpecificReason.valueOf(reason));

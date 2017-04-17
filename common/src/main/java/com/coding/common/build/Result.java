@@ -2,9 +2,15 @@ package com.coding.common.build;
 
 import java.util.Date;
 
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+@Data
+@Accessors(fluent = true)
 public class Result {
-	public Date buildTime;
-	public String path;
-	public boolean success = false;
-	public SpecificReason specificReason;
+	private Date buildTime;
+	private String path;
+	private boolean success = false;
+	private SpecificReason specificReason;
+	private PomInfo pomInfo;
 }

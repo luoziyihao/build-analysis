@@ -2,8 +2,8 @@ package com.coding.analysis;
 
 import com.coding.analysis.entity.AnalysisInput;
 import com.coding.analysis.entity.MemberAnalysisInput;
-import com.coding.analysis.entity.ResultInput;
 import com.coding.analysis.entity.ResultIllegalReason;
+import com.coding.analysis.entity.ResultInput;
 import com.coding.common.build.BuildResult;
 import com.coding.common.build.Result;
 import com.google.common.base.Preconditions;
@@ -44,15 +44,15 @@ public class ValidatorImpl implements Validator {
     private Function<? super Result, ? extends ResultInput> createResultInput() {
         return result -> {
             ResultInput resultInput = new ResultInput().result(result);
-            if (checkNull(result.buildTime, "buildTime", resultInput)) {
+            if (checkNull(result.buildTime(), "buildTime", resultInput)) {
                 return resultInput;
             }
             ;
-            if (checkNull(result.path, "path", resultInput)) {
+            if (checkNull(result.path(), "path", resultInput)) {
                 return resultInput;
             }
             ;
-            if (!result.success && result.specificReason == null) {
+            if (!result.success() && result.specificReason() == null) {
                 return resultInput
                         .legal(false)
                         .resultState(ResultIllegalReason.SPECIFIC_REASON_LOSS);

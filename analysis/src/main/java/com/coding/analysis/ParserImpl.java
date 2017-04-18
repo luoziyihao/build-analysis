@@ -44,7 +44,7 @@ public class ParserImpl implements Parser {
                                         log.error("result illegal, resultInput={}", resultInput);
                                         return false;
                                     }
-                                    return resultInput.result().success;
+                                    return resultInput.result().success();
                                 })
                                 .map(resultInput -> new TestModuleInfo().setResult(resultInput.result()))
                                 .map(parserResult())

@@ -6,9 +6,6 @@ import lombok.experimental.Accessors;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by luoziyihao on 4/12/17.
- */
 @Data
 public class TestSuiteInfo {
     private String name;

@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class AnalysisTest {
     @Test
-    public void setBuildResult() throws Exception {
+    public void testBuildResult() throws Exception {
 
         System.out.println("hello, world");
     }

@@ -11,8 +11,8 @@
     <modules>
         <module>docs</module>
         <module>common</module>
-        <module>build</module>
         <module>analysis</module>
+        <module>build</module>
         <module>web</module>
     </modules>
 

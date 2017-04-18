@@ -47,15 +47,9 @@ public class ValidatorImpl implements Validator {
             if (checkNull(result.buildTime(), "buildTime", resultInput)) {
                 return resultInput;
             }
-            ;
+
             if (checkNull(result.path(), "path", resultInput)) {
                 return resultInput;
-            }
-            ;
-            if (!result.success() && result.specificReason() == null) {
-                return resultInput
-                        .legal(false)
-                        .resultState(ResultIllegalReason.SPECIFIC_REASON_LOSS);
             }
             return resultInput
                     .legal(true);
@@ -66,7 +60,7 @@ public class ValidatorImpl implements Validator {
         if (reference == null) {
             resultInput
                     .legal(false)
-                    .resultState(ResultIllegalReason.PARAMETER_LOSS)
+                    .resultIllegalReason(ResultIllegalReason.PARAMETER_LOSS)
                     .msg(Strman.append(field, " is null"));
 
             return true;

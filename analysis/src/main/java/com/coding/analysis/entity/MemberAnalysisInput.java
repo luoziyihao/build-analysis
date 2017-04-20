@@ -11,6 +11,6 @@ import java.util.List;
 @Data
 @Accessors(fluent = true)
 public class MemberAnalysisInput {
-    private String qq;
+    private String id;
     private List<ResultInput> resultInputs;
 }

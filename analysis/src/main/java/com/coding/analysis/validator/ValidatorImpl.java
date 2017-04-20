@@ -30,7 +30,7 @@ public class ValidatorImpl implements Validator {
 
     private Function<? super Map.Entry<String, List<Result>>, ? extends MemberAnalysisInput> createMemberAnalysisInput() {
         return entry -> new MemberAnalysisInput()
-                .qq(entry.getKey())
+                .id(entry.getKey())
                 .resultInputs(
                         entry.getValue()
                                 .stream()

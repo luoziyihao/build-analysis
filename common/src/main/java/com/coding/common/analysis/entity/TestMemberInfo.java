@@ -11,6 +11,6 @@ import java.util.List;
 @Accessors(chain = true)
 @Data
 public class TestMemberInfo {
-    private String qq;
+    private String id;
     private List<TestModuleInfo> testModuleInfos;
 }

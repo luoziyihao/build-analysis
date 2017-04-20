@@ -30,7 +30,7 @@ public class ParserImpl implements Parser{
                         analysisInput.memberBuildInputs().stream()
                                 .map(parseMemberAnalysisInput())
                                 .collect(Collectors.toMap(
-                                        TestMemberInfo::getQq,
+                                        TestMemberInfo::getId,
                                         testMemberInfo -> testMemberInfo
                                         )
                                 )
@@ -39,7 +39,7 @@ public class ParserImpl implements Parser{
 
     private Function<? super MemberAnalysisInput, ? extends TestMemberInfo> parseMemberAnalysisInput() {
         return memberAnalysisInput -> new TestMemberInfo()
-                .setQq(memberAnalysisInput.qq())
+                .setId(memberAnalysisInput.id())
                 .setTestModuleInfos(
                         memberAnalysisInput.resultInputs()
                                 .stream()

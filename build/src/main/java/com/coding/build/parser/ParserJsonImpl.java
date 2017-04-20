@@ -18,7 +18,7 @@ import com.coding.build.builder.Member;
 public class ParserJsonImpl implements Parser{
 
 	public static final String CONFIG_TAG = "config";
-	public static final String ID_TAG = "qq";
+	public static final String ID_TAG = "id";
 	public static final String CODE_PATH_TAG = "codePath";
 	
 	public static void main(String[] args) {
@@ -74,11 +74,11 @@ public class ParserJsonImpl implements Parser{
 	 * {
 	  "config": [
 	    {
-	      "qq": "1204187480",
+	      "id": "1204187480",
 	      "codePath": "group17/1204187480/code/homework"
 	    },
 	    {
-	      "qq": "1158154002",
+	      "id": "1158154002",
 	      "codePath": "group17/1158154002"
 	    }
 	  ]

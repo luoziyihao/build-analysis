@@ -13,6 +13,6 @@ public class TestModuleInfo {
 
     private SurefireReports surefireReports;
     private Result result;
-    private MavenState mavenState;
+    private MavenTransferState mavenState;
 
 }

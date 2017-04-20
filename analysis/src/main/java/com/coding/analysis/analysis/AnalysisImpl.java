@@ -1,5 +1,6 @@
-package com.coding.analysis.app;
+package com.coding.analysis.analysis;
 
+import com.coding.analysis.data.TestMemberInfoRepository;
 import com.coding.analysis.parser.Parser;
 import com.coding.analysis.validator.Validator;
 import com.coding.common.analysis.entity.AnalysisResult;
@@ -14,6 +15,7 @@ public class AnalysisImpl implements Analysis {
 
     private Validator validator;
     private Parser parser;
+    private TestMemberInfoRepository testMemberInfoRepository;
 
     @Override
     public Analysis setValidator(Validator validator) {
@@ -27,11 +29,18 @@ public class AnalysisImpl implements Analysis {
         return this;
     }
 
+    @Override
+    public Analysis setTestMemberInfoRepository(TestMemberInfoRepository testMemberInfoRepository) {
+        this.testMemberInfoRepository = testMemberInfoRepository;
+        return this;
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public boolean analysis(BuildResult buildResult) {
         try {
             AnalysisResult analysisResult = parser.parse(validator.validate(buildResult));
+            testMemberInfoRepository.save(analysisResult.getTestMemberInfos());
             log.debug("analysisResult={}", analysisResult);
         } catch (Exception e) {
             log.error("analysis error", e);

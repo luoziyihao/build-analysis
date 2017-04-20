@@ -1,5 +1,7 @@
-package com.coding.analysis;
+package com.coding.analysis.app;
 
+import com.coding.analysis.parser.Parser;
+import com.coding.analysis.validator.Validator;
 import com.coding.common.build.BuildResult;
 
 /**

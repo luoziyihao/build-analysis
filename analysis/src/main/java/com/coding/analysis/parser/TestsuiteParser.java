@@ -1,4 +1,4 @@
-package com.coding.analysis;
+package com.coding.analysis.parser;
 
 import com.coding.common.analysis.entity.TestSuiteInfo;
 

@@ -1,12 +1,11 @@
 package com.coding.analysis;
 
 import com.alibaba.fastjson.JSONObject;
+import com.coding.analysis.parser.TestsuiteParserImpl;
 import com.coding.common.analysis.entity.TestSuiteInfo;
 import org.junit.Test;
 
 import java.io.File;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by luoziyihao on 4/18/17.

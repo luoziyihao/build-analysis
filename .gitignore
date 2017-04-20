@@ -19,3 +19,6 @@ rebel.*
 .rebel.*
 
 target
+
+*.log
+log

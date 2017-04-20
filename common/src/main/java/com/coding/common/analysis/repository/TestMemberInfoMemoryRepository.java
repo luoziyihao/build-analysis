@@ -1,13 +1,17 @@
-package com.coding.analysis.data;
+package com.coding.common.analysis.repository;
 
 import com.coding.common.analysis.entity.TestMemberInfo;
 import com.google.common.collect.Maps;
+import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by luoziyihao on 4/20/17.
  */
+@Repository
 public class TestMemberInfoMemoryRepository implements TestMemberInfoRepository {
 
 
@@ -16,6 +20,11 @@ public class TestMemberInfoMemoryRepository implements TestMemberInfoRepository 
     @Override
     public TestMemberInfo get(String id) {
         return testMemberInfos.get(id);
+    }
+
+    @Override
+    public List<TestMemberInfo> getAll() {
+        return new ArrayList<>(testMemberInfos.values());
     }
 
     @Override

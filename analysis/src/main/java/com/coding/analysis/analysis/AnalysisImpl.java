@@ -1,6 +1,6 @@
 package com.coding.analysis.analysis;
 
-import com.coding.analysis.data.TestMemberInfoRepository;
+import com.coding.common.analysis.repository.TestMemberInfoRepository;
 import com.coding.analysis.parser.Parser;
 import com.coding.analysis.validator.Validator;
 import com.coding.common.analysis.entity.AnalysisResult;

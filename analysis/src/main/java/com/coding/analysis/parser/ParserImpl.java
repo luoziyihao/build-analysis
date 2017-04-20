@@ -60,9 +60,13 @@ public class ParserImpl implements Parser{
                                 })
                                 .map(resultInput -> new TestModuleInfo()
                                         .setResult(resultInput.result())
-                                        .setMavenState(
+                                        .setMavenTransferState(
                                                 resultInput.result().specificReason() != null ?
                                                         MavenTransferState.MAVEN_UNUSED : MavenTransferState.MAVEN_USED
+                                        )
+                                        .setMavenBuildState(
+                                                resultInput.result().success() ?
+                                                        MavenBuildState.SUCCESS : MavenBuildState.FAILED
                                         )
                                 )
                                 .map(parserResult())
@@ -89,7 +93,7 @@ public class ParserImpl implements Parser{
             if (!(surefireReportsDir.exists() && surefireReportsDir.isDirectory())) {
                 return testModuleInfo;
             }
-            testModuleInfo.setMavenState(MavenTransferState.SUREFIRE_REPORTS_PLUGIN_USED);
+            testModuleInfo.setMavenTransferState(MavenTransferState.SUREFIRE_REPORTS_PLUGIN_USED);
             return testModuleInfo.setSurefireReports(parserSurefireReports(surefireReportsDir));
         };
     }

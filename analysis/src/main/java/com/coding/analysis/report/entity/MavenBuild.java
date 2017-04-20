@@ -1,4 +1,4 @@
-package com.coding.analysis.report;
+package com.coding.analysis.report.entity;
 
 import com.coding.common.analysis.entity.MavenBuildState;
 import com.coding.common.analysis.entity.MavenTransferState;

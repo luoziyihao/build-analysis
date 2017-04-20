@@ -1,6 +1,6 @@
 package com.coding.analysis.parser;
 
-import com.coding.analysis.entity.AnalysisInput;
+import com.coding.analysis.validator.AnalysisInput;
 import com.coding.common.analysis.entity.AnalysisResult;
 
 /**

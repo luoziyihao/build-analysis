@@ -1,5 +1,6 @@
-package com.coding.analysis.entity;
+package com.coding.analysis.validator;
 
+import com.coding.analysis.validator.MemberAnalysisInput;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

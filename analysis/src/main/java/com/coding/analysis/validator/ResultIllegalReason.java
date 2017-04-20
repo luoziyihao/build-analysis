@@ -1,4 +1,4 @@
-package com.coding.analysis.entity;
+package com.coding.analysis.validator;
 
 /**
  * Created by luoziyihao on 4/12/17.

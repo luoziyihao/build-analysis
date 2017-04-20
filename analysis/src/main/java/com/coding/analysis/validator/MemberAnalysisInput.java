@@ -1,4 +1,4 @@
-package com.coding.analysis.entity;
+package com.coding.analysis.validator;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

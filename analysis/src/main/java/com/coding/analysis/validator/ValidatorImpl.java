@@ -1,9 +1,5 @@
 package com.coding.analysis.validator;
 
-import com.coding.analysis.entity.AnalysisInput;
-import com.coding.analysis.entity.MemberAnalysisInput;
-import com.coding.analysis.entity.ResultIllegalReason;
-import com.coding.analysis.entity.ResultInput;
 import com.coding.common.build.BuildResult;
 import com.coding.common.build.Result;
 import com.google.common.base.Preconditions;

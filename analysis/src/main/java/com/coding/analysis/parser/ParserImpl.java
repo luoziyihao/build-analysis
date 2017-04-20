@@ -1,7 +1,7 @@
 package com.coding.analysis.parser;
 
-import com.coding.analysis.entity.AnalysisInput;
-import com.coding.analysis.entity.MemberAnalysisInput;
+import com.coding.analysis.validator.AnalysisInput;
+import com.coding.analysis.validator.MemberAnalysisInput;
 import com.coding.common.analysis.entity.*;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;

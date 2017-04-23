@@ -10,11 +10,11 @@ public class BuildResult {
 		buildResultMapping = new HashMap<>();
 	}
 	
-	public void addResultEntry(String id, String path, boolean success, String reason, Date buildTime, PomInfo pomInfo){
+	public void addResultEntry(String id, String path, boolean success, SpecificReason reason, Date buildTime, PomInfo pomInfo){
 		
 		Result newResult = new Result();
 		newResult.success(success);
-		newResult.specificReason(SpecificReason.valueOf(reason));
+		newResult.specificReason(reason);
 		newResult.path(path);
 		newResult.buildTime(buildTime);
 		newResult.pomInfo(pomInfo);

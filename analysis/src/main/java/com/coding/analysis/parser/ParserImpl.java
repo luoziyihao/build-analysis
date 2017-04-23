@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import strman.Strman;
 
 import java.io.File;
+import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -18,7 +19,7 @@ import java.util.stream.Stream;
  */
 
 @Slf4j
-public class ParserImpl implements Parser{
+public class ParserImpl implements Parser {
 
     private TestsuiteParser testSuiteInfoParser = new TestsuiteParserImpl();
 
@@ -52,7 +53,7 @@ public class ParserImpl implements Parser{
                                 })
                                 .filter(resultInput -> {
                                     File file = new File(resultInput.result().path());
-                                    if (file.exists() && file.isDirectory()) {
+                                    if (!legalDirectory(file)) {
                                         log.error("result path illegal, resultInput={}", resultInput);
                                         return false;
                                     }
@@ -77,6 +78,10 @@ public class ParserImpl implements Parser{
 
     }
 
+    private boolean legalDirectory(File file) {
+        return file.exists() && file.isDirectory();
+    }
+
     private static final String SUREFIRE_REPORTS_PRE = Strman.append(
             File.separator
             , "target"
@@ -90,7 +95,7 @@ public class ParserImpl implements Parser{
         return testModuleInfo -> {
             final String surefireReportsPath = Strman.append(testModuleInfo.getResult().path(), SUREFIRE_REPORTS_PRE);
             File surefireReportsDir = new File(surefireReportsPath);
-            if (!(surefireReportsDir.exists() && surefireReportsDir.isDirectory())) {
+            if (!legalDirectory(surefireReportsDir)) {
                 return testModuleInfo;
             }
             testModuleInfo.setMavenTransferState(MavenTransferState.SUREFIRE_REPORTS_PLUGIN_USED);
@@ -107,18 +112,20 @@ public class ParserImpl implements Parser{
             log.error("files is null in surefireReports Directory={}", surefireReportsDir);
             return null;
         }
-        Stream<TestSuiteInfo> stream = Stream.of(files)
+
+        final List<TestSuiteInfo> testSuiteInfos = Stream.of(files)
                 .filter(file -> {
                     final String fileName = file.getName();
                     return fileName.startsWith(TEST_PREFIX) && fileName.endsWith(TEST_SUFFIX);
                 })
-                .map(file -> testSuiteInfoParser.parse(file));
+                .map(file -> testSuiteInfoParser.parse(file))
+                .collect(Collectors.toList());
 
         return new SurefireReports()
-                .setTestSuiteInfos(stream.collect(Collectors.toList()))
-                .setSurefireReportsCountInfo(
-                        stream.map(TestSuiteInfo::surefireReportsCountInfo)
-                                .reduce(new SurefireReportsCountInfo(), accumulatorSurefireReportsCountInfo())
+                .setTestSuiteInfos(testSuiteInfos)
+                .setSurefireReportsCountInfo(testSuiteInfos.stream()
+                        .map(TestSuiteInfo::surefireReportsCountInfo)
+                        .reduce(new SurefireReportsCountInfo(), accumulatorSurefireReportsCountInfo())
                 );
 
     }

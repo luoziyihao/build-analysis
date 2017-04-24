@@ -14,6 +14,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.coding.common.util.FileUtils.legalDirectory;
+
 /**
  * Created by luoziyihao on 4/12/17.
  */
@@ -51,14 +53,6 @@ public class ParserImpl implements Parser {
                                     }
                                     return resultInput.result().success();
                                 })
-                                .filter(resultInput -> {
-                                    File file = new File(resultInput.result().path());
-                                    if (!legalDirectory(file)) {
-                                        log.error("result path illegal, resultInput={}", resultInput);
-                                        return false;
-                                    }
-                                    return resultInput.result().success();
-                                })
                                 .map(resultInput -> new TestModuleInfo()
                                         .setResult(resultInput.result())
                                         .setMavenTransferState(
@@ -76,10 +70,6 @@ public class ParserImpl implements Parser {
                 );
 
 
-    }
-
-    private boolean legalDirectory(File file) {
-        return file.exists() && file.isDirectory();
     }
 
     private static final String SUREFIRE_REPORTS_PRE = Strman.append(

@@ -3,13 +3,18 @@ package com.coding.analysis.validator;
 import com.coding.common.build.BuildResult;
 import com.coding.common.build.Result;
 import com.google.common.base.Preconditions;
+import lombok.extern.slf4j.Slf4j;
 import strman.Strman;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static com.coding.common.util.FileUtils.legalDirectory;
+
+@Slf4j
 public class ValidatorImpl implements Validator {
 
     @Override
@@ -41,11 +46,19 @@ public class ValidatorImpl implements Validator {
         return result -> {
             ResultInput resultInput = new ResultInput().result(result);
             if (checkNull(result.buildTime(), "buildTime", resultInput)) {
+                log.error("result illegal, buildTime is null");
                 return resultInput;
             }
 
             if (checkNull(result.path(), "path", resultInput)) {
+                log.error("result illegal, path is null");
                 return resultInput;
+            }
+            if (checkArgument(!legalDirectory(new File(result.path()))
+                    , "path", resultInput, " is illegal directory", ResultIllegalReason.ILLEGAL_PATH)) {
+                log.error("result illegal, path={}", result.path());
+                return resultInput;
+
             }
             return resultInput
                     .legal(true);
@@ -53,15 +66,24 @@ public class ValidatorImpl implements Validator {
     }
 
     private boolean checkNull(Object reference, String field, ResultInput resultInput) {
-        if (reference == null) {
+        return checkArgument(reference == null
+                , field, resultInput, " is null", ResultIllegalReason.PARAMETER_LOSS);
+    }
+
+
+    private boolean checkArgument(boolean reference
+            , String field, ResultInput resultInput, String description, ResultIllegalReason illegalReason) {
+        if (!reference) {
             resultInput
                     .legal(false)
-                    .resultIllegalReason(ResultIllegalReason.PARAMETER_LOSS)
-                    .msg(Strman.append(field, " is null"));
+                    .resultIllegalReason(illegalReason)
+                    .msg(Strman.append(field, description));
 
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
+
+
 
 }

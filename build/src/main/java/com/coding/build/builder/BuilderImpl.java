@@ -14,6 +14,7 @@ public class BuilderImpl implements Builder{
 	protected String MAVEN_HOME_TAG = "M3_HOME"; 
 	public BuilderImpl(){
 		maven_home_path = System.getenv(MAVEN_HOME_TAG);
+		System.out.println("maven_home_path=" + maven_home_path);
 	}
 	
 	@Override

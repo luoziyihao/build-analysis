@@ -3,10 +3,7 @@ package com.coding.web;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(
-        scanBasePackages = {"com.coding.common", "com.coding.web"}
-)
-
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {

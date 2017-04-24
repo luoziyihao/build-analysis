@@ -7,21 +7,12 @@ import com.coding.common.analysis.repository.TestMemberInfoMemoryRepository;
 import com.coding.common.analysis.repository.TestMemberInfoRepository;
 import com.coding.common.build.BuildResult;
 import com.coding.common.build.PomInfo;
-import com.coding.common.build.SpecificReason;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
 
 import java.util.Date;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by luoziyihao on 4/23/17.
@@ -49,7 +40,7 @@ public class AnalysisImplTest {
                 .setTestMemberInfoRepository(testMemberInfoRepository)
                 .analysis(buildResult);
         TestMemberInfo testMemberInfo = testMemberInfoRepository.get(qq);
-        log.info("testMemberInfo={}", testMemberInfo);
+        log.debug("testMemberInfo={}", testMemberInfo);
         Assert.notNull(testMemberInfo, "null");
 
     }

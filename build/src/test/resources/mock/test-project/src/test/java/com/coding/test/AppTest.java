@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Created by luoziyihao on 4/20/17.
  */
-public class MapTest {
+public class AppTest {
 
     @Test
     public void testMapGet() {

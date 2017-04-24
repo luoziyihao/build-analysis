@@ -1,5 +1,8 @@
 package com.coding.web.component;
 
+import lombok.Data;
+
+@Data
 public class Ret {
     public static final int code_success = 0;
     public static final int code_fail = 1;

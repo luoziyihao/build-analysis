@@ -1,5 +1,6 @@
 package com.coding.common.analysis.entity;
 
+import com.coding.common.analysis.entity.surefire.SurefireReports;
 import com.coding.common.build.Result;
 import lombok.Data;
 import lombok.experimental.Accessors;

@@ -1,11 +1,9 @@
 package com.coding.analysis.parser;
 
 import com.alibaba.fastjson.JSONObject;
-import com.coding.common.analysis.entity.TestSuiteInfo;
+import com.coding.common.analysis.entity.surefire.TestSuiteInfo;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
-
-import java.io.File;
 
 /**
  * Created by luoziyihao on 4/18/17.

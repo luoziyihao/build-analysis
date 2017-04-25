@@ -1,6 +1,9 @@
 package com.coding.analysis.parser;
 
-import com.coding.common.analysis.entity.*;
+import com.coding.common.analysis.entity.surefire.ErrorInfo;
+import com.coding.common.analysis.entity.surefire.PropertyInfo;
+import com.coding.common.analysis.entity.surefire.TestCaseInfo;
+import com.coding.common.analysis.entity.surefire.TestSuiteInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.digester.Digester;
 import org.xml.sax.SAXException;

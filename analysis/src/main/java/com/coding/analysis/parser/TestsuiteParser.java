@@ -1,6 +1,6 @@
 package com.coding.analysis.parser;
 
-import com.coding.common.analysis.entity.TestSuiteInfo;
+import com.coding.common.analysis.entity.surefire.TestSuiteInfo;
 
 import java.io.File;
 

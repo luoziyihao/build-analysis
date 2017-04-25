@@ -1,4 +1,4 @@
-package com.coding.common.analysis.entity;
+package com.coding.common.analysis.entity.surefire;
 
 import lombok.Data;
 import lombok.experimental.Accessors;

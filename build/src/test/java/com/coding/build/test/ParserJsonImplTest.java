@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 
+import org.json.JSONException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,16 +23,10 @@ public class ParserJsonImplTest {
 	public void testParse() {
 		Parser parser = new ParserJsonImpl();
 		String targetDir = "/Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/build/src/main/resources/project/config";
-		try {
-			List<Group> groups = parser.parse(targetDir);
-			System.out.println("Group count: " + groups.size());
-			for(Group g:groups){
-				System.out.println(g);
-			}
-		} catch (ParserFailException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		Group group = parser.parse(targetDir);
+		System.out.println(group);
+
 	}
 
 }

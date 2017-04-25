@@ -1,12 +1,20 @@
 {
   "config": [
     {
+      "qq": "1282579502",
+      "codePath" : "group17/1282579502"
+    },
+    {
       "qq": "1204187480",
       "codePath": "group17/1204187480/code/homework"
     },
     {
       "qq": "1158154002",
       "codePath": "group17/1158154002"
+    }
+    {
+      "qq": "3333333",
+      "codePath": "group/333333"
     }
   ]
 }

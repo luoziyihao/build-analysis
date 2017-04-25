@@ -1,6 +1,8 @@
 package com.coding.build.builder;
 
-public class Member {
+import lombok.Data;
+
+public @Data class Member {
 	public String buildPath;
 	public String id;
 	

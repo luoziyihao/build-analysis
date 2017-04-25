@@ -1,16 +1,20 @@
 package com.coding.build.parser;
 
-import java.util.List;
+import java.util.Map;
+
+import org.json.JSONException;
 
 import com.coding.build.builder.Group;
+import com.coding.common.build.SpecificReason;
 
 
 public interface Parser {
 	/**
 	 * 
 	 * @param path the directory path contains the configuration files, ie, group17.json, group18.json
-	 * @return List of Group object which would be used by builder 
+	 * @return Group object which would be used by builder 
 	 * @throws ParserFailException
 	 */
-	public List<Group> parse(String path) throws ParserFailException;
+	public Group parse(String path);
+	public Map<Group, SpecificReason> getFaultyGroups();
 }

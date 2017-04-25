@@ -29,6 +29,10 @@ public class Group {
 		return members.get(index);
 	}
 	
+	public List<Member> getMembers(){
+		return members;
+	}
+	
 	public String toString(){
 		StringBuilder sb = new StringBuilder();
 		sb.append(groupId);

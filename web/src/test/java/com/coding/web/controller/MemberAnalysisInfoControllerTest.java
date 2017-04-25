@@ -4,6 +4,7 @@ import com.coding.analysis.analysis.Analysis;
 import com.coding.common.build.BuildResult;
 import com.coding.common.build.PomInfo;
 import com.coding.web.component.Ret;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Slf4j
 public class MemberAnalysisInfoControllerTest {
 
     @Autowired
@@ -53,5 +55,14 @@ public class MemberAnalysisInfoControllerTest {
         Ret ret = restTemplate.getForObject(Strman.append("/memberAnalysisInfo/", id), Ret.class);
         assertThat(ret.toString()).isEqualTo(Ret.fail(Strman.append("memberAnalysisInfo is not exist for id=", id)).toString());
     }
+
+    @Test
+    public void findOne2() throws Exception {
+        String id = "1204187480";
+        Ret ret = restTemplate.getForObject(Strman.append("/memberAnalysisInfo/", id), Ret.class);
+        assertThat(ret.getCode()).isEqualTo(Ret.code_success);
+        log.info("ret={}", ret);
+    }
+
 
 }

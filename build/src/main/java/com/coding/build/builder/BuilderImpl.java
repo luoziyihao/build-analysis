@@ -30,15 +30,16 @@ public class BuilderImpl implements Builder{
 	
 	public Parser jsonParser = null;
 	public Validator validator = null;
+	public String maven_home_path =null;
 	
 	private final Logger logger = Logger.getLogger(this.getClass());
 	public BuilderImpl(){
-<<<<<<< HEAD
-		
-=======
-		maven_home_path = System.getenv(MAVEN_HOME_TAG);
+
+		maven_home_path = System.getenv(BuilderConfiguration.MAVEN_HOME_TAG);
 		System.out.println("maven_home_path=" + maven_home_path);
->>>>>>> 967e35d268405c80cf8be6519205a43dddb7de56
+		if(maven_home_path == null){
+			maven_home_path = BuilderConfiguration.maven_home_path;
+		}
 	}
 	
 

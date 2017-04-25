@@ -33,7 +33,12 @@ public class BuilderImpl implements Builder{
 	
 	private final Logger logger = Logger.getLogger(this.getClass());
 	public BuilderImpl(){
+<<<<<<< HEAD
 		
+=======
+		maven_home_path = System.getenv(MAVEN_HOME_TAG);
+		System.out.println("maven_home_path=" + maven_home_path);
+>>>>>>> 967e35d268405c80cf8be6519205a43dddb7de56
 	}
 	
 

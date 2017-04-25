@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: com.coding.analysis.analysis.AnalysisImplTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.337 sec <<< FAILURE! - in com.coding.analysis.analysis.AnalysisImplTest
+analysis(com.coding.analysis.analysis.AnalysisImplTest)  Time elapsed: 0.032 sec  <<< ERROR!
+java.io.FileNotFoundException: class path resource [mock/test-project] cannot be resolved to URL because it does not exist
+	at org.springframework.core.io.ClassPathResource.getURL(ClassPathResource.java:187)
+	at org.springframework.core.io.AbstractFileResolvingResource.getFile(AbstractFileResolvingResource.java:48)
+	at com.coding.analysis.analysis.AnalysisImplTest.analysis(AnalysisImplTest.java:39)
+

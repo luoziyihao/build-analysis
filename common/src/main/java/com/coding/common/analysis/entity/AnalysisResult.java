@@ -11,5 +11,5 @@ import java.util.Map;
 @Data
 @Accessors(chain = true)
 public class AnalysisResult {
-    Map<String, TestMemberInfo> testMemberInfos;
+    Map<String, MemberAnalysisInfo> testMemberInfos;
 }

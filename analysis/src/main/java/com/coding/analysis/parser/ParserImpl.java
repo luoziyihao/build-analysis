@@ -33,17 +33,17 @@ public class ParserImpl implements Parser {
                         analysisInput.memberBuildInputs().stream()
                                 .map(parseMemberAnalysisInput())
                                 .collect(Collectors.toMap(
-                                        TestMemberInfo::getId,
+                                        MemberAnalysisInfo::getId,
                                         testMemberInfo -> testMemberInfo
                                         )
                                 )
                 );
     }
 
-    private Function<? super MemberAnalysisInput, ? extends TestMemberInfo> parseMemberAnalysisInput() {
-        return memberAnalysisInput -> new TestMemberInfo()
+    private Function<? super MemberAnalysisInput, ? extends MemberAnalysisInfo> parseMemberAnalysisInput() {
+        return memberAnalysisInput -> new MemberAnalysisInfo()
                 .setId(memberAnalysisInput.id())
-                .setTestModuleInfos(
+                .setModuleAnalysisInfos(
                         memberAnalysisInput.resultInputs()
                                 .stream()
                                 .filter(resultInput -> {
@@ -53,7 +53,7 @@ public class ParserImpl implements Parser {
                                     }
                                     return resultInput.result().success();
                                 })
-                                .map(resultInput -> new TestModuleInfo()
+                                .map(resultInput -> new ModuleAnalysisInfo()
                                         .setResult(resultInput.result())
                                         .setMavenTransferState(
                                                 resultInput.result().specificReason() != null ?
@@ -81,15 +81,15 @@ public class ParserImpl implements Parser {
     );
 
 
-    private Function<? super TestModuleInfo, ? extends TestModuleInfo> parserResult() {
-        return testModuleInfo -> {
-            final String surefireReportsPath = Strman.append(testModuleInfo.getResult().path(), SUREFIRE_REPORTS_PRE);
+    private Function<? super ModuleAnalysisInfo, ? extends ModuleAnalysisInfo> parserResult() {
+        return moduleAnalysisInfo -> {
+            final String surefireReportsPath = Strman.append(moduleAnalysisInfo.getResult().path(), SUREFIRE_REPORTS_PRE);
             File surefireReportsDir = new File(surefireReportsPath);
             if (!legalDirectory(surefireReportsDir)) {
-                return testModuleInfo;
+                return moduleAnalysisInfo;
             }
-            testModuleInfo.setMavenTransferState(MavenTransferState.SUREFIRE_REPORTS_PLUGIN_USED);
-            return testModuleInfo.setSurefireReports(parserSurefireReports(surefireReportsDir));
+            moduleAnalysisInfo.setMavenTransferState(MavenTransferState.SUREFIRE_REPORTS_PLUGIN_USED);
+            return moduleAnalysisInfo.setSurefireReports(parserSurefireReports(surefireReportsDir));
         };
     }
 

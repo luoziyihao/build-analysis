@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class TestModuleInfo {
+public class ModuleAnalysisInfo {
 
     private SurefireReports surefireReports;
     private Result result;

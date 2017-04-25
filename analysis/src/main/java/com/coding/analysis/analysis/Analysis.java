@@ -1,6 +1,6 @@
 package com.coding.analysis.analysis;
 
-import com.coding.common.analysis.repository.TestMemberInfoRepository;
+import com.coding.common.analysis.repository.MemberAnalysisInfoRepository;
 import com.coding.analysis.parser.Parser;
 import com.coding.analysis.validator.Validator;
 import com.coding.common.build.BuildResult;
@@ -25,6 +25,6 @@ public interface Analysis {
      */
     boolean analysis(BuildResult buildResult);
 
-    Analysis setTestMemberInfoRepository(TestMemberInfoRepository testMemberInfoRepository);
+    Analysis setMemberAnalysisInfoRepository(MemberAnalysisInfoRepository testMemberInfoRepository);
 
 }

@@ -1,7 +1,7 @@
 package com.coding.web.component.config;
 
-import com.coding.common.analysis.repository.TestMemberInfoMemoryRepository;
-import com.coding.common.analysis.repository.TestMemberInfoRepository;
+import com.coding.common.analysis.repository.MemberAnalysisInfoMemoryRepository;
+import com.coding.common.analysis.repository.MemberAnalysisInfoRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class RepositoryConfig {
 
     @Bean
-    public TestMemberInfoRepository testMemberInfoRepository() {
-        return new TestMemberInfoMemoryRepository();
+    public MemberAnalysisInfoRepository memberAnalysisInfoRepository() {
+        return new MemberAnalysisInfoMemoryRepository();
     }
 }

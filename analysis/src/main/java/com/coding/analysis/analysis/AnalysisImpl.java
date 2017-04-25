@@ -1,6 +1,6 @@
 package com.coding.analysis.analysis;
 
-import com.coding.common.analysis.repository.TestMemberInfoRepository;
+import com.coding.common.analysis.repository.MemberAnalysisInfoRepository;
 import com.coding.analysis.parser.Parser;
 import com.coding.analysis.validator.Validator;
 import com.coding.common.analysis.entity.AnalysisResult;
@@ -15,7 +15,7 @@ public class AnalysisImpl implements Analysis {
 
     private Validator validator;
     private Parser parser;
-    private TestMemberInfoRepository testMemberInfoRepository;
+    private MemberAnalysisInfoRepository memberAnalysisInfoRepository;
 
     @Override
     public Analysis setValidator(Validator validator) {
@@ -30,8 +30,8 @@ public class AnalysisImpl implements Analysis {
     }
 
     @Override
-    public Analysis setTestMemberInfoRepository(TestMemberInfoRepository testMemberInfoRepository) {
-        this.testMemberInfoRepository = testMemberInfoRepository;
+    public Analysis setMemberAnalysisInfoRepository(MemberAnalysisInfoRepository memberAnalysisInfoRepository) {
+        this.memberAnalysisInfoRepository = memberAnalysisInfoRepository;
         return this;
     }
 
@@ -40,7 +40,7 @@ public class AnalysisImpl implements Analysis {
     public boolean analysis(BuildResult buildResult) {
         try {
             AnalysisResult analysisResult = parser.parse(validator.validate(buildResult));
-            testMemberInfoRepository.save(analysisResult.getTestMemberInfos());
+            memberAnalysisInfoRepository.save(analysisResult.getTestMemberInfos());
             log.debug("analysisResult={}", analysisResult);
         } catch (Exception e) {
             log.error("analysis error", e);

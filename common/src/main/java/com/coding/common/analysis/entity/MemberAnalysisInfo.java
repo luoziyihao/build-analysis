@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Accessors(chain = true)
 @Data
-public class TestMemberInfo {
+public class MemberAnalysisInfo {
     private String id;
-    private List<TestModuleInfo> testModuleInfos;
+    private List<ModuleAnalysisInfo> moduleAnalysisInfos;
 }

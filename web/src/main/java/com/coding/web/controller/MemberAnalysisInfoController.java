@@ -1,7 +1,7 @@
 package com.coding.web.controller;
 
-import com.coding.common.analysis.entity.TestMemberInfo;
-import com.coding.common.analysis.repository.TestMemberInfoRepository;
+import com.coding.common.analysis.entity.MemberAnalysisInfo;
+import com.coding.common.analysis.repository.MemberAnalysisInfoRepository;
 import com.coding.web.component.Ret;
 import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +14,18 @@ import strman.Strman;
  * Created by luoziyihao on 4/20/17.
  */
 @RestController
-@RequestMapping(value = "/testMemberInfo")
-public class TestMemberInfoController {
+@RequestMapping(value = "/memberAnalysisInfo")
+public class MemberAnalysisInfoController {
 
     @Autowired
-    private TestMemberInfoRepository testMemberInfoRepository;
+    private MemberAnalysisInfoRepository memberAnalysisInfoRepository;
 
     @RequestMapping(value = "/{id}")
     public Object findOne(@PathVariable(value = "id") String id) {
         Preconditions.checkNotNull(id);
-        TestMemberInfo testMemberInfo = testMemberInfoRepository.get(id);
+        MemberAnalysisInfo testMemberInfo = memberAnalysisInfoRepository.get(id);
         if (testMemberInfo == null) {
-            return Ret.fail(Strman.append("testMemberInfo is not exist for id=", id));
+            return Ret.fail(Strman.append("memberAnalysisInfo is not exist for id=", id));
         } else {
             return Ret.success(testMemberInfo);
         }

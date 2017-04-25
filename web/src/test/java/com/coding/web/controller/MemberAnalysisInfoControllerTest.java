@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TestMemberInfoControllerTest {
+public class MemberAnalysisInfoControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -50,8 +50,8 @@ public class TestMemberInfoControllerTest {
     @Test
     public void findOne() throws Exception {
         String id = "12041874801";
-        Ret ret = restTemplate.getForObject(Strman.append("/testMemberInfo/", id), Ret.class);
-        assertThat(ret.toString()).isEqualTo(Ret.fail(Strman.append("testMemberInfo is not exist for id=", id)).toString());
+        Ret ret = restTemplate.getForObject(Strman.append("/memberAnalysisInfo/", id), Ret.class);
+        assertThat(ret.toString()).isEqualTo(Ret.fail(Strman.append("memberAnalysisInfo is not exist for id=", id)).toString());
     }
 
 }

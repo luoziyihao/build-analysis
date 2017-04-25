@@ -6,7 +6,7 @@ import com.coding.analysis.parser.Parser;
 import com.coding.analysis.parser.ParserImpl;
 import com.coding.analysis.validator.Validator;
 import com.coding.analysis.validator.ValidatorImpl;
-import com.coding.common.analysis.repository.TestMemberInfoRepository;
+import com.coding.common.analysis.repository.MemberAnalysisInfoRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,11 +30,11 @@ public class AnalysisConfig {
     @Bean
     public Analysis analysis(@Qualifier(value = "analysisParser") Parser parser
             , @Qualifier(value = "analysisValidator") Validator validator
-            , TestMemberInfoRepository testMemberInfoRepository) {
+            , MemberAnalysisInfoRepository memberAnalysisInfoRepository) {
 
         return new AnalysisImpl()
                 .setParser(parser)
                 .setValidator(validator)
-                .setTestMemberInfoRepository(testMemberInfoRepository);
+                .setMemberAnalysisInfoRepository(memberAnalysisInfoRepository);
     }
 }

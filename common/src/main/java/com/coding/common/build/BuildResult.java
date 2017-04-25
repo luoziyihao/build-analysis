@@ -4,8 +4,17 @@ import java.util.*;
 
 public class BuildResult {
 	
-	Map<String, List<Result>> buildResultMapping;
+	Map<String, List<Result>> buildResultMapping; //qq -> result
 	
+	private static BuildResult instance = null;
+	
+	public static BuildResult getInstance(){
+		if(instance == null){
+			instance = new BuildResult();
+		}
+		return instance;
+	}
+	//if no other place is using the buildResult instance, i will change it to private later.
 	public BuildResult(){
 		buildResultMapping = new HashMap<>();
 	}
@@ -37,4 +46,10 @@ public class BuildResult {
 		return buildResultMapping.entrySet();
 	}
 
+	public void dump(){
+		buildResultMapping.forEach((id, l) ->{
+			System.out.println("ID: " + id);
+			l.forEach(System.out::println);
+		});
+	}
 }

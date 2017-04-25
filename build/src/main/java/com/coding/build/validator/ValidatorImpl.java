@@ -57,10 +57,11 @@ public class ValidatorImpl implements Validator{
 //		});
 		Instant start = Instant.now();
 		//LocalDateTime start  = LocalDateTime.now();
-		groups.stream().forEach(group ->{
-			//System.out.println("Group ID: " + group.groupId);
+		groups.stream().filter(g->g!=null).forEach(group ->{
+			System.out.println("valid group: " + group.groupId);
 			Map<Member, ValidationResult> memberResultMapping = new HashMap<>();
-			group.getMembers().stream().forEach(member ->{	
+			group.getMembers().stream().filter(m->m!=null).forEach(member ->{	
+				System.out.println("valid member: " + member);
 				ValidationResult result = null;
 				for(int i = 0; i< validationItems.size(); i++){
 					result = validationItems.get(i).check(member);
@@ -77,6 +78,9 @@ public class ValidatorImpl implements Validator{
 	
 		Duration timeElapsed = Duration.between(start, end);
 		System.out.println("time elapsed: " + timeElapsed.toMillis());
+		if(vResults.size() == 0) {
+			System.err.println("zero valid entries in the result map.");
+		}
 		return vResults;
 	}
 	

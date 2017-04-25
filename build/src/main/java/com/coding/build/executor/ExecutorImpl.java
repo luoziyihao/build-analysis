@@ -3,6 +3,7 @@ package com.coding.build.executor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +19,9 @@ import org.apache.maven.shared.invoker.MavenInvocationException;
 import com.coding.build.builder.BuilderConfiguration;
 import com.coding.build.builder.Group;
 import com.coding.build.builder.Member;
+import com.coding.common.build.BuildResult;
+import com.coding.common.build.Result;
+import com.coding.common.build.SpecificReason;
 
 public class ExecutorImpl implements Executor{
 
@@ -43,6 +47,7 @@ public class ExecutorImpl implements Executor{
 			result.phase(BuildPhase.VALIDATION);
 			boolean success = process(member, VALIDATION);
 			result.success(success);
+			recordResult(member, result.phase(), success);
 			return result;
 		};
 		allCommands.add(validation);
@@ -52,12 +57,40 @@ public class ExecutorImpl implements Executor{
 			result.phase(BuildPhase.DEPENDENCY);
 			boolean success = process(member, Executor.DEPENDENCY);
 			result.success(success);
+			recordResult(member, result.phase(), success);
 			return result;
 		};
 		allCommands.add(dependencyCheck);
-		ExecutionCommand compile = null;
-		ExecutionCommand compileTest = null;
-		ExecutionCommand test = null;
+		ExecutionCommand compile = member ->{
+			ExecutionResult result = new ExecutionResult();
+			result.member(member);
+			result.phase(BuildPhase.COMPILE);
+			boolean success = process(member, Executor.COMPILE);
+			result.success(success);
+			recordResult(member, result.phase(), success);
+			return result;
+		};
+		allCommands.add(compile);
+		ExecutionCommand compileTest = member ->{
+			ExecutionResult result = new ExecutionResult();
+			result.member(member);
+			result.phase(BuildPhase.TEST_COMPILE);
+			boolean success = process(member, Executor.TEST_COMPILE);
+			result.success(success);
+			recordResult(member, result.phase(), success);
+			return result;
+		};
+		allCommands.add(compileTest);
+		ExecutionCommand test = member ->{
+			ExecutionResult result = new ExecutionResult();
+			result.member(member);
+			result.phase(BuildPhase.TEST);
+			boolean success = process(member, Executor.TEST);
+			result.success(success);
+			recordResult(member, result.phase(), success);
+			return result;
+		};
+		allCommands.add(test);
 		 
 	}
 	
@@ -76,13 +109,13 @@ public class ExecutorImpl implements Executor{
 			result = invoker.execute( request );
 			
 			if(result.getExitCode() != 0 ){
-				System.out.println(commandString + ": successful.");
+				System.out.println(commandString + ": Failed.");
 				if(result.getExecutionException() != null){
 					System.out.println("Exception: " + result.getExecutionException().getMessage() );
 				}
 				return false;
 			}else{
-				System.out.println("execution result: " + result.getExitCode());
+				System.out.println(commandString + ": successed.");
 				return true;
 			}
 		} catch (MavenInvocationException e) {
@@ -94,6 +127,20 @@ public class ExecutorImpl implements Executor{
 		}
 	}
 	
+	private void recordResult(Member m, BuildPhase phase, boolean success){
+//		Result result = new Result();
+//		result.buildTime(new Date());
+//		result.path(m.buildPath);
+		SpecificReason reason = null;
+		if(success){	
+			reason = ExecutorTool.mapBuildPhaseToSucess();
+		}
+		else{
+			reason = ExecutorTool.mapBuildPhaseToFailedResultMvnBuildState(phase);
+		}
+//		result.success(success);
+		BuildResult.getInstance().addResultEntry(m.id, m.buildPath, success, reason, new Date(), m.getPom());
+	}
 	
 //	public boolean process(Group target) throws MavenInvocationException, FileNotFoundException {
 //		File targetPathFile = new File(target.getMember(0).buildPath);
@@ -119,12 +166,17 @@ public class ExecutorImpl implements Executor{
 //	}
 	@Override
 	public void process(Group target) {//throws MavenInvocationException, FileNotFoundException {
-		target.getMembers().forEach(m->{
-			allCommands.forEach(cmd -> {
-				ExecutionResult r = cmd.execute(m);
-				executionResults.put(m, r);
-			});
+		
+		allCommands.forEach(cmd -> {
+			target.getMembers().forEach(m->{
+				if(executionResults.get(m) == null || executionResults.get(m).success()){
+					ExecutionResult r = cmd.execute(m);
+					executionResults.put(m, r);
+				}
+			});	
 		});
+		
+		
 	}
 	
 	@Override

@@ -8,7 +8,7 @@ import com.coding.common.build.SpecificReason;
 public class ParserUtil {
 	public static void dumpParsingFaultyMap(Map<Group, SpecificReason> map){
 		map.forEach((group, reason) ->{
-			System.out.println("group: " + group.groupId + " reason: " + reason);
+			System.out.println("Invalid group: " + group.groupId + " reason: " + reason);
 		});
 	}
 }

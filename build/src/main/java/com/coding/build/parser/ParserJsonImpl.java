@@ -24,12 +24,6 @@ import com.coding.build.builder.Member;
 import com.coding.common.build.SpecificReason;
 
 public class ParserJsonImpl implements Parser{
-
-	public static final String CONFIG_TAG = "config";
-	public static final String ID_TAG = "id";
-	public static final String CODE_PATH_TAG = "codePath";
-	
-	public static Parser instance;
 	
 	Map<Group, SpecificReason> parsingResult;
 	
@@ -50,7 +44,7 @@ public class ParserJsonImpl implements Parser{
 	 */
 	@Override
 	public Group parse(String dirPath) {
-		System.out.println(dirPath);
+		//System.out.println("Start parsing: " + dirPath);
 		File[] jsonFiles = getAllJsonFiles(new File(dirPath));
 		
 		String groupId = parseId(dirPath);
@@ -66,6 +60,7 @@ public class ParserJsonImpl implements Parser{
 		
 		File file = jsonFiles[0];
 		if(! checkFile(file)){
+			System.err.println(file.getName() + " is NOT a valid in file system check.");
 			parsingResult.put(newGroup, SpecificReason.INVALID_JSON_CONFIG);
 			return null;
 		}
@@ -73,13 +68,18 @@ public class ParserJsonImpl implements Parser{
 			JSONObject obj = getJsonObject(file);
 			newGroup = convertToGroup(obj, file.getName());
 		}catch(ParserFailException pfe){
+			pfe.printStackTrace();
 			parsingResult.put(newGroup, SpecificReason.INVALID_JSON_CONFIG);
 			return null;
-		}catch(JSONException pfe){
-			
+		}catch(JSONException je){
+			je.printStackTrace();
 			parsingResult.put(newGroup, SpecificReason.INVALID_JSON_CONFIG);
+			return null;
+		}catch(Exception e){
+			e.printStackTrace();
 			return null;
 		}
+		System.out.println("Valid group: " + newGroup.groupId);
 		return newGroup;
 	}
 	
@@ -119,11 +119,11 @@ public class ParserJsonImpl implements Parser{
 	private Group convertToGroup(JSONObject jsonObject, String groupId) throws JSONException, ParserFailException{
 		if(jsonObject == null) throw new ParserFailException("Invalid JSON object for: " + groupId) ;
 		Group group = new Group(groupId);
-		JSONArray memberObjArray =  jsonObject.getJSONArray(CONFIG_TAG);
+		JSONArray memberObjArray =  jsonObject.getJSONArray(BuilderConfiguration.CONFIG_TAG);
 		for(int i = 0; i<memberObjArray.length(); i++){
 			JSONObject memberObj = memberObjArray.getJSONObject(i);
-			String id = memberObj.getString(ID_TAG);
-			String path = memberObj.getString(CODE_PATH_TAG);
+			String id = memberObj.getString(BuilderConfiguration.ID_TAG);
+			String path = memberObj.getString(BuilderConfiguration.CODE_PATH_TAG);
 			Member newMember = new Member();
 			newMember.id = id; newMember.buildPath = BuilderConfiguration.project_root + File.separator+  path;
 			group.addMember(newMember);

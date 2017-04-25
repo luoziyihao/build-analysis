@@ -45,9 +45,7 @@ public class ValidatorTest {
 			return;
 		}
 		System.out.println("number of groups: " + groups.size());
-		groups.stream().forEach(System.out::println);
-		List<String> paths = groups.stream().map(x-> x.groupId).collect(Collectors.toList());
-		paths.forEach(System.out::println);
+		groups.stream().filter(group->group != null).forEach(System.out::println);
 		
 		try {
 			Map<Group, Map<Member, ValidationResult>> resultMap = validator.validate(groups);

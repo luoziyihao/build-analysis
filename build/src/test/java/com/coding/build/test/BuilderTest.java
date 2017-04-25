@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.coding.build.builder.BuildException;
 import com.coding.build.builder.Builder;
 import com.coding.build.builder.BuilderConfiguration;
 import com.coding.build.builder.BuilderImpl;
@@ -42,39 +43,42 @@ public class BuilderTest {
 
 
 	Builder builder = null;
-	Parser parser = null;
-	Validator validator = null;
-	Executor executor = null;
 	@Before
 	public void setUp() throws Exception {
-		builder = new BuilderImpl();
-		parser = new ParserJsonImpl();
-		validator = new ValidatorImpl();
-		ValidationOptionFactory factory = new ValidationOptionFactoryImpl();
-		validator.setupValidationOptionConstructor(factory);
-		executor = new ExecutorImpl();
-		
-		builder.setParser(parser);
+		builder = new BuilderImpl(BuilderConfiguration.project_root);
+		builder.init();
 	}
+	
+//	@Test
+//	public void testBuild(){
+//		List<Group> availableGroups =  builder.fetchGroups(BuilderConfiguration.project_root);
+//		availableGroups.forEach(x->{System.out.println("available groups: " + x);});
+//		ParserUtil.dumpParsingFaultyMap(parser.getFaultyGroups());
+//		Map<Group, Map<Member, ValidationResult>> map = null;
+//		try {
+//			map = validator.validate(availableGroups);
+//		} catch (ValidateFailException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		
+//		//ValidatorUtil.dumpValidationMap(map);
+//		map.forEach((group, memberMap)->{
+//			//System.out.println("about to execute validation");
+//			executor.process(group);
+//		});
+//	}
 	
 	@Test
 	public void testBuild(){
-		List<Group> availableGroups =  builder.fetchGroups(BuilderConfiguration.project_root);
-		availableGroups.forEach(System.out::println);
-		ParserUtil.dumpParsingFaultyMap(parser.getFaultyGroups());
-		Map<Group, Map<Member, ValidationResult>> map = null;
 		try {
-			map = validator.validate(availableGroups);
-		} catch (ValidateFailException e) {
-			// TODO Auto-generated catch block
+			builder.buildAll();
+			builder.getResult().dump();
+		} catch (Exception e) {
+			
 			e.printStackTrace();
 		}
-		ValidatorUtil.dumpValidationMap(map);
-		map.forEach((group, memberMap)->{
-			System.out.println("about to execute validation");
-			executor.process(group);
-		});
-		
-		
 	}
 }

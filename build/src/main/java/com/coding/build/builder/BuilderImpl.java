@@ -10,8 +10,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -19,32 +21,35 @@ import org.apache.log4j.Logger;
 import org.apache.maven.shared.invoker.MavenInvocationException;
 
 import com.coding.build.executor.Executor;
+import com.coding.build.executor.ExecutorImpl;
 import com.coding.build.parser.Parser;
 import com.coding.build.parser.ParserFailException;
+import com.coding.build.parser.ParserJsonImpl;
+import com.coding.build.validator.ValidationOptionFactory;
+import com.coding.build.validator.ValidationOptionFactoryImpl;
 import com.coding.build.validator.Validator;
+import com.coding.build.validator.ValidatorImpl;
+import com.coding.common.build.BuildResult;
+import com.coding.common.build.Result;
 
 public class BuilderImpl implements Builder{
 
-	protected Executor executor = null;
+	private Executor executor = null;
+	private Parser jsonParser = null;
+	private Validator validator = null;
 	
+	BuildResult buildResult = null;
 	
-	public Parser jsonParser = null;
-	public Validator validator = null;
-	public String maven_home_path =null;
+	private String maven_home_path =null;
+	private String project_root = null;
 	
 	private final Logger logger = Logger.getLogger(this.getClass());
-	public BuilderImpl(){
-
-		maven_home_path = System.getenv(BuilderConfiguration.MAVEN_HOME_TAG);
-		System.out.println("maven_home_path=" + maven_home_path);
-		if(maven_home_path == null){
-			maven_home_path = BuilderConfiguration.maven_home_path;
-		}
+	public BuilderImpl(String projectRoot){
+		this.project_root = projectRoot;
+		init();
+		buildResult = BuildResult.getInstance();
 	}
 	
-
-	
-	@Override
 	public boolean build(Group target) {
 		logger.debug("Going to build target: " + target);
 		if(executor != null){
@@ -72,7 +77,6 @@ public class BuilderImpl implements Builder{
 	}
 
 
-	@Override
 	public List<Group> fetchGroups(String projectRoot) {
 		List<Group> groups = new LinkedList<>();
 		Path p = Paths.get(projectRoot);
@@ -90,12 +94,39 @@ public class BuilderImpl implements Builder{
 		return groups;
 	}
 
-
+	@Override
+	public BuildResult getResult() {
+		return this.buildResult;
+	}
 
 	@Override
-	public boolean buildAll(List<Group> groups) {
-		// TODO Auto-generated method stub
-		return false;
+	public void init() {
+		
+		Parser parser = new ParserJsonImpl();
+		Validator validator = new ValidatorImpl();
+		ValidationOptionFactory factory = new ValidationOptionFactoryImpl();
+		validator.setupValidationOptionConstructor(factory);
+		Executor executor = new ExecutorImpl();
+		
+		setParser(parser);
+		setValidator(validator);
+		setExecutor(executor);
+		
+	}
+
+	@Override
+	public void buildAll() throws BuildException{
+		checkTools();
+		List<Group> groups = fetchGroups(this.project_root);
+		groups.stream().filter(group->group!=null).forEach(group->{
+			build(group);
+		});
+	}
+	
+	private void checkTools() throws BuildException{
+		if(validator == null) throw new BuildException("Invalid building validator. Call init() first.");
+		if(jsonParser == null) throw new BuildException("Invalid building parser. Call init() first.");
+		if(executor == null) throw new BuildException("Invalid building executor. Call init() first.");
 	}
 	
 

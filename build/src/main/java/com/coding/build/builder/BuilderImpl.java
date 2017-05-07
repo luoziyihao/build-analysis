@@ -1,36 +1,27 @@
 package com.coding.build.builder;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.lang.reflect.Array;
-import java.nio.file.DirectoryStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
-import org.apache.log4j.Logger;
-import org.apache.maven.shared.invoker.MavenInvocationException;
-
 import com.coding.build.executor.Executor;
 import com.coding.build.executor.ExecutorImpl;
 import com.coding.build.parser.Parser;
-import com.coding.build.parser.ParserFailException;
 import com.coding.build.parser.ParserJsonImpl;
 import com.coding.build.validator.ValidationOptionFactory;
 import com.coding.build.validator.ValidationOptionFactoryImpl;
 import com.coding.build.validator.Validator;
 import com.coding.build.validator.ValidatorImpl;
 import com.coding.common.build.BuildResult;
-import com.coding.common.build.Result;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class BuilderImpl implements Builder{
 
@@ -43,7 +34,7 @@ public class BuilderImpl implements Builder{
 	private String maven_home_path =null;
 	private String project_root = null;
 	
-	private final Logger logger = Logger.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	public BuilderImpl(String projectRoot){
 		this.project_root = projectRoot;
 		init();
@@ -57,7 +48,7 @@ public class BuilderImpl implements Builder{
 				executor.setMavenHome(BuilderConfiguration.maven_home_path);
 				executor.process(target);
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				logger.error("build failed for group={}", target, e);
 			}
 		}
 		
@@ -81,15 +72,14 @@ public class BuilderImpl implements Builder{
 		List<Group> groups = new LinkedList<>();
 		Path p = Paths.get(projectRoot);
 		
-		Predicate<Path> pfilter = path-> {
-			return path.getFileName().toString().matches(".*group[0-9]+");
-		};
+		Predicate<Path> pfilter = path-> path.getFileName().toString().matches(".*group[0-9]+");
 		try {
-			groups = Files.list(p).filter(pfilter).map(path -> {
-				return jsonParser.parse(path.toString());
-			}).filter(g -> g!= null).collect(Collectors.toList());
+			groups = Files.list(p)
+					.filter(pfilter).map(path -> jsonParser.parse(path.toString()))
+					.filter(Objects::nonNull)
+					.collect(Collectors.toList());
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("fetchGroups projectRoot={}", projectRoot, e);
 		}
 		return groups;
 	}
@@ -118,9 +108,7 @@ public class BuilderImpl implements Builder{
 	public void buildAll() throws BuildException{
 		checkTools();
 		List<Group> groups = fetchGroups(this.project_root);
-		groups.stream().filter(group->group!=null).forEach(group->{
-			build(group);
-		});
+		groups.stream().filter(Objects::nonNull).forEach(this::build);
 	}
 	
 	private void checkTools() throws BuildException{

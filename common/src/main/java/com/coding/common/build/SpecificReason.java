@@ -5,7 +5,6 @@ public enum SpecificReason {
 	INVALID_FORMAT, 
 	MAVEN_POM_NOT_FOUND,
 	NO_SUCH_DIRECTORY, //The path specified in JSON configuration for a member is not found
-	SKIPPED, 
 	INVALID_JSON_CONFIG, //JSON file has a faulty format
 
       FAILED

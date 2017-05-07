@@ -6,6 +6,7 @@ import com.coding.common.analysis.entity.*;
 import com.coding.common.analysis.entity.surefire.SurefireReports;
 import com.coding.common.analysis.entity.surefire.SurefireReportsCountInfo;
 import com.coding.common.analysis.entity.surefire.TestSuiteInfo;
+import com.coding.common.build.SpecificReason;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 import strman.Strman;
@@ -58,14 +59,8 @@ public class ParserImpl implements Parser {
                                 })
                                 .map(resultInput -> new ModuleAnalysisInfo()
                                         .setResult(resultInput.result())
-                                        .setMavenTransferState(
-                                                resultInput.result().specificReason() != null ?
-                                                        MavenTransferState.MAVEN_UNUSED : MavenTransferState.MAVEN_USED
-                                        )
-                                        .setMavenBuildState(
-                                                resultInput.result().success() ?
-                                                        MavenBuildState.SUCCESS : MavenBuildState.FAILED
-                                        )
+                                        .setMavenTransferState(mapSpecificReasonToMavenTransferState(resultInput.result().specificReason()))
+                                        .setMavenBuildState(mapSpecificReasonToBuildState(resultInput.result().specificReason()))
                                 )
                                 .map(parserResult())
                                 .collect(Collectors.toList())
@@ -73,6 +68,46 @@ public class ParserImpl implements Parser {
                 );
 
 
+    }
+
+    private MavenTransferState mapSpecificReasonToMavenTransferState(SpecificReason specificReason) {
+        if (specificReason == null) {
+            return MavenTransferState.MAVEN_UNUSED;
+        }
+        switch (specificReason) {
+            case INVALID_FORMAT:
+            case MAVEN_POM_NOT_FOUND:
+            case NO_SUCH_DIRECTORY:
+            case INVALID_JSON_CONFIG:
+                return MavenTransferState.MAVEN_UNUSED;
+            case CONFIG_ILLEGAL:
+            case COMPILE_FAILED:
+            case TEST_FAILED:
+            case TEST_SKIPPED:
+            case DEPENDENCY_FAILED:
+            case FAILED:
+            default:
+                return MavenTransferState.MAVEN_USED;
+
+        }
+    }
+
+    private MavenBuildState mapSpecificReasonToBuildState(SpecificReason specificReason) {
+        if (specificReason == null) {
+            return MavenBuildState.NEVER_BUILD;
+        }
+        switch (specificReason) {
+            case SUCCESS:
+            case CONFIG_ILLEGAL:
+            case COMPILE_FAILED:
+            case TEST_FAILED:
+            case TEST_SKIPPED:
+            case DEPENDENCY_FAILED:
+            case FAILED:
+                return MavenBuildState.valueOf(specificReason.name());
+            default:
+                return MavenBuildState.NEVER_BUILD;
+        }
     }
 
     private static final String SUREFIRE_REPORTS_PRE = Strman.append(

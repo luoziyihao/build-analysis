@@ -49,6 +49,11 @@ public class ValidationOptionFactoryImpl implements ValidationOptionFactory{
 			}
 			return new ValidationResult(true, SpecificReason.SUCCESS);
 		}
+
+		@Override
+		public String getDescription() {
+			return "Check if Maven POM exists.";
+		}
 	}
 	
 	private class ValidationOptionDirectory extends ValidationOption{
@@ -58,6 +63,11 @@ public class ValidationOptionFactoryImpl implements ValidationOptionFactory{
 			Path p = Paths.get(m.buildPath);
 			return Files.exists(p) ? new ValidationResult() : new ValidationResult(false, SpecificReason.NO_SUCH_DIRECTORY);
 			
+		}
+
+		@Override
+		public String getDescription() {
+			return "Check if building path exists.";
 		}
 	}
 }

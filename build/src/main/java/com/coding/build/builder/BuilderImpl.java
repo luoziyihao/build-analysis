@@ -25,8 +25,10 @@ import com.coding.build.executor.ExecutorImpl;
 import com.coding.build.parser.Parser;
 import com.coding.build.parser.ParserFailException;
 import com.coding.build.parser.ParserJsonImpl;
+import com.coding.build.validator.ValidateFailException;
 import com.coding.build.validator.ValidationOptionFactory;
 import com.coding.build.validator.ValidationOptionFactoryImpl;
+import com.coding.build.validator.ValidationResult;
 import com.coding.build.validator.Validator;
 import com.coding.build.validator.ValidatorImpl;
 import com.coding.common.build.BuildResult;
@@ -118,6 +120,12 @@ public class BuilderImpl implements Builder{
 	public void buildAll() throws BuildException{
 		checkTools();
 		List<Group> groups = fetchGroups(this.project_root);
+		try {
+			validator.validate(groups);
+		} catch (ValidateFailException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		groups.stream().filter(group->group!=null).forEach(group->{
 			build(group);
 		});

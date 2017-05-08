@@ -6,7 +6,7 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(fluent = true)
 public class PomInfo {
-	private String artifactId;
-	private String groupId;
-	private String version;
+	private String artifactId="DemoArtifactId";
+	private String groupId="DemoGroupId";
+	private String version="DemoVersion";
 }

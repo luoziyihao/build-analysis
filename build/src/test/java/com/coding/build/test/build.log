@@ -1,0 +1,942 @@
+About to process : ID: 1204187480 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework command: test
+POM file homework specified with the -f/--file command line argument does not exist
+POM file 1282579502 specified with the -f/--file command line argument does not exist
+[INFO] Scanning for projects...
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building group17_1282579502 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] parent
+[INFO] basic
+[INFO] coderising
+[INFO] coding2017
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building parent 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building basic 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ group17_1282579502 ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ basic ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 128 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ group17_1282579502 ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework/basic/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ basic ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ basic ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework/basic/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ basic ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ basic ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ group17_1282579502 ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ group17_1282579502 ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 2 source files to /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502/target/test-classes
+[INFO] Surefire report directory: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework/basic/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ group17_1282579502 ---
+Running com.coding.api.ArraysTest
+[INFO] Surefire report directory: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502/target/surefire-reports
+12:31:06.915 [main] INFO com.coding.api.ArraysTest - a=[1, 2, 3, 4], b=[1, 2, 3, 4, null, null, null, null, null, null]
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.039 sec
+Running com.coding.api.SystemTest
+12:31:06.960 [main] INFO com.coding.api.SystemTest - b=[11, 22, 33, 44, 3, 4, 5]
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Running com.coding.basic.ArrayListTest
+12:31:07.066 [main] INFO com.coding.basic.ArrayListTest - 1
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 sec
+Running com.coding.basic.LinkedListTest
+Tests run: 27, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.029 sec <<< FAILURE!
+getElements(com.coding.basic.LinkedListTest)  Time elapsed: 0.015 sec  <<< FAILURE!
+org.junit.ComparisonFailure: expected:<[4[,5,6,7]]> but was:<[4[]]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at com.coding.basic.LinkedListTest.getElements(LinkedListTest.java:146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:252)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:189)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:165)
+	at org.apache.maven.surefire.booter.ProviderFactory.invokeProvider(ProviderFactory.java:85)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:115)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:75)
+
+
+Results :
+
+Failed tests:   getElements(com.coding.basic.LinkedListTest): expected:<[4[,5,6,7]]> but was:<[4[]]>
+
+Tests run: 31, Failures: 1, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] parent ............................................. SUCCESS [  0.014 s]
+[INFO] basic .............................................. FAILURE [ 10.326 s]
+[INFO] coderising ......................................... SKIPPED
+[INFO] coding2017 ......................................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 10.734 s
+[INFO] Finished at: 2017-05-08T12:31:07-07:00
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+[INFO] Final Memory: 10M/114M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test) on project basic: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework/basic/target/surefire-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :basic
+test: Failed.
+Running test.java.ByteCodeIteratorTest
+10101
+10101
+15
+110100
+110100
+34
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.095 sec
+Running test.java.JvmTest
+path: /Users/erlisuo/Documents/workspace/codeRising2017working/1282579502/bin/com/coderising/jvm/test/EmployeeV1.class
+Magic Number: cafebabe
+Major version: 52 minor version: 0
+added: com.coderising.jvm.constant.NullConstantInfo current size; 0
+added: com.coderising.jvm.constant.ClassInfo current size; 1
+UTF 8 content com/coderising/jvm/test/EmployeeV1
+added: com.coderising.jvm.constant.UTF8Info current size; 2
+added: com.coderising.jvm.constant.ClassInfo current size; 3
+UTF 8 content java/lang/Object
+added: com.coderising.jvm.constant.UTF8Info current size; 4
+UTF 8 content name
+added: com.coderising.jvm.constant.UTF8Info current size; 5
+UTF 8 content Ljava/lang/String;
+added: com.coderising.jvm.constant.UTF8Info current size; 6
+UTF 8 content age
+added: com.coderising.jvm.constant.UTF8Info current size; 7
+UTF 8 content I
+added: com.coderising.jvm.constant.UTF8Info current size; 8
+UTF 8 content <init>
+added: com.coderising.jvm.constant.UTF8Info current size; 9
+UTF 8 content (Ljava/lang/String;I)V
+added: com.coderising.jvm.constant.UTF8Info current size; 10
+UTF 8 content Code
+added: com.coderising.jvm.constant.UTF8Info current size; 11
+added: com.coderising.jvm.constant.MethodRefInfo current size; 12
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 13
+UTF 8 content ()V
+added: com.coderising.jvm.constant.UTF8Info current size; 14
+added: com.coderising.jvm.constant.FieldRefInfo current size; 15
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 16
+added: com.coderising.jvm.constant.FieldRefInfo current size; 17
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 18
+UTF 8 content LineNumberTable
+added: com.coderising.jvm.constant.UTF8Info current size; 19
+UTF 8 content LocalVariableTable
+added: com.coderising.jvm.constant.UTF8Info current size; 20
+UTF 8 content this
+added: com.coderising.jvm.constant.UTF8Info current size; 21
+UTF 8 content Lcom/coderising/jvm/test/EmployeeV1;
+added: com.coderising.jvm.constant.UTF8Info current size; 22
+UTF 8 content setName
+added: com.coderising.jvm.constant.UTF8Info current size; 23
+UTF 8 content (Ljava/lang/String;)V
+added: com.coderising.jvm.constant.UTF8Info current size; 24
+UTF 8 content setAge
+added: com.coderising.jvm.constant.UTF8Info current size; 25
+UTF 8 content (I)V
+added: com.coderising.jvm.constant.UTF8Info current size; 26
+UTF 8 content sayHello
+added: com.coderising.jvm.constant.UTF8Info current size; 27
+added: com.coderising.jvm.constant.FieldRefInfo current size; 28
+added: com.coderising.jvm.constant.ClassInfo current size; 29
+UTF 8 content java/lang/System
+added: com.coderising.jvm.constant.UTF8Info current size; 30
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 31
+UTF 8 content out
+added: com.coderising.jvm.constant.UTF8Info current size; 32
+UTF 8 content Ljava/io/PrintStream;
+added: com.coderising.jvm.constant.UTF8Info current size; 33
+added: com.coderising.jvm.constant.StringInfo current size; 34
+UTF 8 content Hello , this is class Employee 
+added: com.coderising.jvm.constant.UTF8Info current size; 35
+added: com.coderising.jvm.constant.MethodRefInfo current size; 36
+added: com.coderising.jvm.constant.ClassInfo current size; 37
+UTF 8 content java/io/PrintStream
+added: com.coderising.jvm.constant.UTF8Info current size; 38
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 39
+UTF 8 content println
+added: com.coderising.jvm.constant.UTF8Info current size; 40
+UTF 8 content main
+added: com.coderising.jvm.constant.UTF8Info current size; 41
+UTF 8 content ([Ljava/lang/String;)V
+added: com.coderising.jvm.constant.UTF8Info current size; 42
+added: com.coderising.jvm.constant.StringInfo current size; 43
+UTF 8 content Andy
+added: com.coderising.jvm.constant.UTF8Info current size; 44
+added: com.coderising.jvm.constant.MethodRefInfo current size; 45
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 46
+added: com.coderising.jvm.constant.MethodRefInfo current size; 47
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 48
+UTF 8 content args
+added: com.coderising.jvm.constant.UTF8Info current size; 49
+UTF 8 content [Ljava/lang/String;
+added: com.coderising.jvm.constant.UTF8Info current size; 50
+UTF 8 content p
+added: com.coderising.jvm.constant.UTF8Info current size; 51
+UTF 8 content SourceFile
+added: com.coderising.jvm.constant.UTF8Info current size; 52
+UTF 8 content EmployeeV1.java
+added: com.coderising.jvm.constant.UTF8Info current size; 53
+class
+0021000100030000
+visit flag index: 33 variable value: Ljava/io/PrintStream;
+class info: 1
+class info: 3
+Fields count: 2
+Methods count: 5
+access flag index: 1
+name Index: 9 name value: <init>
+descriptor Index: 10 descriptor value: (Ljava/lang/String;I)V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 89
+max stack: 2
+max local variable: 3
+code length: 15
+real cdoe: 2ab7000c2a2bb5000f2a1cb50011b1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 18
+line number table length: 4
+start pc: 0 line number: 9
+start pc: 4 line number: 10
+start pc: 9 line number: 11
+start pc: 14 line number: 12
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 32
+local variable table length: 3
+local variable table item: LocalVariableItem [startPC=0, length=15, nameIndex=21 val: this, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=0]
+local variable table item: LocalVariableItem [startPC=0, length=15, nameIndex=5 val: name, descIndex=6 val: Ljava/lang/String;, index=1]
+local variable table item: LocalVariableItem [startPC=0, length=15, nameIndex=7 val: age, descIndex=8 val: I, index=2]
+set code attribute.
+dumpping method: Method [accessFlag=1, nameIndex=9 name val: <init>, descriptorIndex=10 desc val: (Ljava/lang/String;I)V]
+access flag index: 1
+name Index: 23 name value: setName
+descriptor Index: 24 descriptor value: (Ljava/lang/String;)V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 62
+max stack: 2
+max local variable: 2
+code length: 6
+real cdoe: 2a2bb5000fb1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 10
+line number table length: 2
+start pc: 0 line number: 15
+start pc: 5 line number: 16
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 22
+local variable table length: 2
+local variable table item: LocalVariableItem [startPC=0, length=6, nameIndex=21 val: this, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=0]
+local variable table item: LocalVariableItem [startPC=0, length=6, nameIndex=5 val: name, descIndex=6 val: Ljava/lang/String;, index=1]
+set code attribute.
+dumpping method: Method [accessFlag=1, nameIndex=23 name val: setName, descriptorIndex=24 desc val: (Ljava/lang/String;)V]
+access flag index: 1
+name Index: 25 name value: setAge
+descriptor Index: 26 descriptor value: (I)V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 62
+max stack: 2
+max local variable: 2
+code length: 6
+real cdoe: 2a1bb50011b1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 10
+line number table length: 2
+start pc: 0 line number: 18
+start pc: 5 line number: 19
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 22
+local variable table length: 2
+local variable table item: LocalVariableItem [startPC=0, length=6, nameIndex=21 val: this, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=0]
+local variable table item: LocalVariableItem [startPC=0, length=6, nameIndex=7 val: age, descIndex=8 val: I, index=1]
+set code attribute.
+dumpping method: Method [accessFlag=1, nameIndex=25 name val: setAge, descriptorIndex=26 desc val: (I)V]
+access flag index: 1
+name Index: 27 name value: sayHello
+descriptor Index: 14 descriptor value: ()V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 55
+max stack: 2
+max local variable: 1
+code length: 9
+real cdoe: b2001c1222b60024b1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 10
+line number table length: 2
+start pc: 0 line number: 21
+start pc: 8 line number: 22
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 12
+local variable table length: 1
+local variable table item: LocalVariableItem [startPC=0, length=9, nameIndex=21 val: this, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=0]
+set code attribute.
+dumpping method: Method [accessFlag=1, nameIndex=27 name val: sayHello, descriptorIndex=14 desc val: ()V]
+access flag index: 9
+name Index: 41 name value: main
+descriptor Index: 42 descriptor value: ([Ljava/lang/String;)V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 77
+max stack: 4
+max local variable: 2
+code length: 17
+real cdoe: bb000159122b101db7002d4c2bb6002fb1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 14
+line number table length: 3
+start pc: 0 line number: 24
+start pc: 12 line number: 25
+start pc: 16 line number: 27
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 22
+local variable table length: 2
+local variable table item: LocalVariableItem [startPC=0, length=17, nameIndex=49 val: args, descIndex=50 val: [Ljava/lang/String;, index=0]
+local variable table item: LocalVariableItem [startPC=12, length=5, nameIndex=51 val: p, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=1]
+set code attribute.
+dumpping method: Method [accessFlag=9, nameIndex=41 name val: main, descriptorIndex=42 desc val: ([Ljava/lang/String;)V]
+class method dump: Method [accessFlag=1, nameIndex=9 name val: <init>, descriptorIndex=10 desc val: (Ljava/lang/String;I)V]
+class method dump: Method [accessFlag=1, nameIndex=23 name val: setName, descriptorIndex=24 desc val: (Ljava/lang/String;)V]
+class method dump: Method [accessFlag=1, nameIndex=25 name val: setAge, descriptorIndex=26 desc val: (I)V]
+class method dump: Method [accessFlag=1, nameIndex=27 name val: sayHello, descriptorIndex=14 desc val: ()V]
+class method dump: Method [accessFlag=9, nameIndex=41 name val: main, descriptorIndex=42 desc val: ([Ljava/lang/String;)V]
+path: /Users/erlisuo/Documents/workspace/codeRising2017working/1282579502/bin/com/coderising/jvm/test/EmployeeV1.class
+path: /Users/erlisuo/Documents/workspace/codeRising2017working/1282579502/bin/com/coderising/jvm/test/EmployeeV1.class
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.31 sec
+
+Results :
+
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.826 s
+[INFO] Finished at: 2017-05-08T12:31:08-07:00
+[INFO] Final Memory: 16M/126M
+[INFO] ------------------------------------------------------------------------
+test: successed.
+ID: 1204187480 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework has failed case.
+About to process : ID: 1282579502 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502 command: surefire-report:report
+ID: 1158154002 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1158154002 has failed case.
+POM file 1282579502 specified with the -f/--file command line argument does not exist
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building group17_1282579502 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> maven-surefire-report-plugin:2.20:report (default-cli) > [surefire]test @ group17_1282579502 >>>
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ group17_1282579502 ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 128 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ group17_1282579502 ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ group17_1282579502 ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ group17_1282579502 ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 2 source files to /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ group17_1282579502 ---
+[INFO] Surefire report directory: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running test.java.ByteCodeIteratorTest
+10101
+10101
+15
+110100
+110100
+34
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 sec
+Running test.java.JvmTest
+path: /Users/erlisuo/Documents/workspace/codeRising2017working/1282579502/bin/com/coderising/jvm/test/EmployeeV1.class
+Magic Number: cafebabe
+Major version: 52 minor version: 0
+added: com.coderising.jvm.constant.NullConstantInfo current size; 0
+added: com.coderising.jvm.constant.ClassInfo current size; 1
+UTF 8 content com/coderising/jvm/test/EmployeeV1
+added: com.coderising.jvm.constant.UTF8Info current size; 2
+added: com.coderising.jvm.constant.ClassInfo current size; 3
+UTF 8 content java/lang/Object
+added: com.coderising.jvm.constant.UTF8Info current size; 4
+UTF 8 content name
+added: com.coderising.jvm.constant.UTF8Info current size; 5
+UTF 8 content Ljava/lang/String;
+added: com.coderising.jvm.constant.UTF8Info current size; 6
+UTF 8 content age
+added: com.coderising.jvm.constant.UTF8Info current size; 7
+UTF 8 content I
+added: com.coderising.jvm.constant.UTF8Info current size; 8
+UTF 8 content <init>
+added: com.coderising.jvm.constant.UTF8Info current size; 9
+UTF 8 content (Ljava/lang/String;I)V
+added: com.coderising.jvm.constant.UTF8Info current size; 10
+UTF 8 content Code
+added: com.coderising.jvm.constant.UTF8Info current size; 11
+added: com.coderising.jvm.constant.MethodRefInfo current size; 12
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 13
+UTF 8 content ()V
+added: com.coderising.jvm.constant.UTF8Info current size; 14
+added: com.coderising.jvm.constant.FieldRefInfo current size; 15
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 16
+added: com.coderising.jvm.constant.FieldRefInfo current size; 17
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 18
+UTF 8 content LineNumberTable
+added: com.coderising.jvm.constant.UTF8Info current size; 19
+UTF 8 content LocalVariableTable
+added: com.coderising.jvm.constant.UTF8Info current size; 20
+UTF 8 content this
+added: com.coderising.jvm.constant.UTF8Info current size; 21
+UTF 8 content Lcom/coderising/jvm/test/EmployeeV1;
+added: com.coderising.jvm.constant.UTF8Info current size; 22
+UTF 8 content setName
+added: com.coderising.jvm.constant.UTF8Info current size; 23
+UTF 8 content (Ljava/lang/String;)V
+added: com.coderising.jvm.constant.UTF8Info current size; 24
+UTF 8 content setAge
+added: com.coderising.jvm.constant.UTF8Info current size; 25
+UTF 8 content (I)V
+added: com.coderising.jvm.constant.UTF8Info current size; 26
+UTF 8 content sayHello
+added: com.coderising.jvm.constant.UTF8Info current size; 27
+added: com.coderising.jvm.constant.FieldRefInfo current size; 28
+added: com.coderising.jvm.constant.ClassInfo current size; 29
+UTF 8 content java/lang/System
+added: com.coderising.jvm.constant.UTF8Info current size; 30
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 31
+UTF 8 content out
+added: com.coderising.jvm.constant.UTF8Info current size; 32
+UTF 8 content Ljava/io/PrintStream;
+added: com.coderising.jvm.constant.UTF8Info current size; 33
+added: com.coderising.jvm.constant.StringInfo current size; 34
+UTF 8 content Hello , this is class Employee 
+added: com.coderising.jvm.constant.UTF8Info current size; 35
+added: com.coderising.jvm.constant.MethodRefInfo current size; 36
+added: com.coderising.jvm.constant.ClassInfo current size; 37
+UTF 8 content java/io/PrintStream
+added: com.coderising.jvm.constant.UTF8Info current size; 38
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 39
+UTF 8 content println
+added: com.coderising.jvm.constant.UTF8Info current size; 40
+UTF 8 content main
+added: com.coderising.jvm.constant.UTF8Info current size; 41
+UTF 8 content ([Ljava/lang/String;)V
+added: com.coderising.jvm.constant.UTF8Info current size; 42
+added: com.coderising.jvm.constant.StringInfo current size; 43
+UTF 8 content Andy
+added: com.coderising.jvm.constant.UTF8Info current size; 44
+added: com.coderising.jvm.constant.MethodRefInfo current size; 45
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 46
+added: com.coderising.jvm.constant.MethodRefInfo current size; 47
+added: com.coderising.jvm.constant.NameAndTypeInfo current size; 48
+UTF 8 content args
+added: com.coderising.jvm.constant.UTF8Info current size; 49
+UTF 8 content [Ljava/lang/String;
+added: com.coderising.jvm.constant.UTF8Info current size; 50
+UTF 8 content p
+added: com.coderising.jvm.constant.UTF8Info current size; 51
+UTF 8 content SourceFile
+added: com.coderising.jvm.constant.UTF8Info current size; 52
+UTF 8 content EmployeeV1.java
+added: com.coderising.jvm.constant.UTF8Info current size; 53
+class
+0021000100030000
+visit flag index: 33 variable value: Ljava/io/PrintStream;
+class info: 1
+class info: 3
+Fields count: 2
+Methods count: 5
+access flag index: 1
+name Index: 9 name value: <init>
+descriptor Index: 10 descriptor value: (Ljava/lang/String;I)V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 89
+max stack: 2
+max local variable: 3
+code length: 15
+real cdoe: 2ab7000c2a2bb5000f2a1cb50011b1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 18
+line number table length: 4
+start pc: 0 line number: 9
+start pc: 4 line number: 10
+start pc: 9 line number: 11
+start pc: 14 line number: 12
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 32
+local variable table length: 3
+local variable table item: LocalVariableItem [startPC=0, length=15, nameIndex=21 val: this, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=0]
+local variable table item: LocalVariableItem [startPC=0, length=15, nameIndex=5 val: name, descIndex=6 val: Ljava/lang/String;, index=1]
+local variable table item: LocalVariableItem [startPC=0, length=15, nameIndex=7 val: age, descIndex=8 val: I, index=2]
+set code attribute.
+dumpping method: Method [accessFlag=1, nameIndex=9 name val: <init>, descriptorIndex=10 desc val: (Ljava/lang/String;I)V]
+access flag index: 1
+name Index: 23 name value: setName
+descriptor Index: 24 descriptor value: (Ljava/lang/String;)V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 62
+max stack: 2
+max local variable: 2
+code length: 6
+real cdoe: 2a2bb5000fb1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 10
+line number table length: 2
+start pc: 0 line number: 15
+start pc: 5 line number: 16
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 22
+local variable table length: 2
+local variable table item: LocalVariableItem [startPC=0, length=6, nameIndex=21 val: this, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=0]
+local variable table item: LocalVariableItem [startPC=0, length=6, nameIndex=5 val: name, descIndex=6 val: Ljava/lang/String;, index=1]
+set code attribute.
+dumpping method: Method [accessFlag=1, nameIndex=23 name val: setName, descriptorIndex=24 desc val: (Ljava/lang/String;)V]
+access flag index: 1
+name Index: 25 name value: setAge
+descriptor Index: 26 descriptor value: (I)V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 62
+max stack: 2
+max local variable: 2
+code length: 6
+real cdoe: 2a1bb50011b1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 10
+line number table length: 2
+start pc: 0 line number: 18
+start pc: 5 line number: 19
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 22
+local variable table length: 2
+local variable table item: LocalVariableItem [startPC=0, length=6, nameIndex=21 val: this, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=0]
+local variable table item: LocalVariableItem [startPC=0, length=6, nameIndex=7 val: age, descIndex=8 val: I, index=1]
+set code attribute.
+dumpping method: Method [accessFlag=1, nameIndex=25 name val: setAge, descriptorIndex=26 desc val: (I)V]
+access flag index: 1
+name Index: 27 name value: sayHello
+descriptor Index: 14 descriptor value: ()V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 55
+max stack: 2
+max local variable: 1
+code length: 9
+real cdoe: b2001c1222b60024b1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 10
+line number table length: 2
+start pc: 0 line number: 21
+start pc: 8 line number: 22
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 12
+local variable table length: 1
+local variable table item: LocalVariableItem [startPC=0, length=9, nameIndex=21 val: this, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=0]
+set code attribute.
+dumpping method: Method [accessFlag=1, nameIndex=27 name val: sayHello, descriptorIndex=14 desc val: ()V]
+access flag index: 9
+name Index: 41 name value: main
+descriptor Index: 42 descriptor value: ([Ljava/lang/String;)V
+attributeCount: 1
+attribute type: 11 utf8 val: Code
+about to parse CODE attribute
+parsing CodeAttr...
+attribute length: 77
+max stack: 4
+max local variable: 2
+code length: 17
+real cdoe: bb000159122b101db7002d4c2bb6002fb1
+exception count: 0
+sub attribute count : 2
+attribute type: 19 utf8 val: LineNumberTable
+about to parse LINE_NUM_TABLE attribute
+attribute length: 14
+line number table length: 3
+start pc: 0 line number: 24
+start pc: 12 line number: 25
+start pc: 16 line number: 27
+attribute type: 20 utf8 val: LocalVariableTable
+about to parse LOCAL_VAR_TABLE attribute
+attribute length: 22
+local variable table length: 2
+local variable table item: LocalVariableItem [startPC=0, length=17, nameIndex=49 val: args, descIndex=50 val: [Ljava/lang/String;, index=0]
+local variable table item: LocalVariableItem [startPC=12, length=5, nameIndex=51 val: p, descIndex=22 val: Lcom/coderising/jvm/test/EmployeeV1;, index=1]
+set code attribute.
+dumpping method: Method [accessFlag=9, nameIndex=41 name val: main, descriptorIndex=42 desc val: ([Ljava/lang/String;)V]
+class method dump: Method [accessFlag=1, nameIndex=9 name val: <init>, descriptorIndex=10 desc val: (Ljava/lang/String;I)V]
+class method dump: Method [accessFlag=1, nameIndex=23 name val: setName, descriptorIndex=24 desc val: (Ljava/lang/String;)V]
+class method dump: Method [accessFlag=1, nameIndex=25 name val: setAge, descriptorIndex=26 desc val: (I)V]
+class method dump: Method [accessFlag=1, nameIndex=27 name val: sayHello, descriptorIndex=14 desc val: ()V]
+class method dump: Method [accessFlag=9, nameIndex=41 name val: main, descriptorIndex=42 desc val: ([Ljava/lang/String;)V]
+path: /Users/erlisuo/Documents/workspace/codeRising2017working/1282579502/bin/com/coderising/jvm/test/EmployeeV1.class
+path: /Users/erlisuo/Documents/workspace/codeRising2017working/1282579502/bin/com/coderising/jvm/test/EmployeeV1.class
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.184 sec
+
+Results :
+
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] <<< maven-surefire-report-plugin:2.20:report (default-cli) < [surefire]test @ group17_1282579502 <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-surefire-report-plugin:2.20:report (default-cli) @ group17_1282579502 ---
+[WARNING] Unable to locate Test Source XRef to link to - DISABLED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 13.329 s
+[INFO] Finished at: 2017-05-08T12:31:23-07:00
+[INFO] Final Memory: 23M/215M
+[INFO] ------------------------------------------------------------------------
+surefire-report:report: successed.
+ID: 1282579502
+Result(buildTime=Mon May 08 12:30:33 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502, success=true, specificReason=SUCCESS, pomInfo=PomInfo(artifactId=DemoArtifactId, groupId=DemoGroupId, version=DemoVersion), description=Check if building path exists.)
+Result(buildTime=Mon May 08 12:30:33 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502, success=true, specificReason=SUCCESS, pomInfo=PomInfo(artifactId=DemoArtifactId, groupId=DemoGroupId, version=DemoVersion), description=Check if Maven POM exists.)
+Result(buildTime=Mon May 08 12:30:42 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502, success=true, specificReason=SUCCESS, pomInfo=null, description=maven validation)
+Result(buildTime=Mon May 08 12:30:52 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502, success=true, specificReason=SUCCESS, pomInfo=null, description=maven compile)
+Result(buildTime=Mon May 08 12:31:08 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502, success=true, specificReason=SUCCESS, pomInfo=null, description=maven test)
+Result(buildTime=Mon May 08 12:31:24 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502, success=true, specificReason=SUCCESS, pomInfo=null, description=maven surefireReport)
+ID: 1204187480
+Result(buildTime=Mon May 08 12:30:33 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework, success=true, specificReason=SUCCESS, pomInfo=PomInfo(artifactId=DemoArtifactId, groupId=DemoGroupId, version=DemoVersion), description=Check if building path exists.)
+Result(buildTime=Mon May 08 12:30:33 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework, success=true, specificReason=SUCCESS, pomInfo=PomInfo(artifactId=DemoArtifactId, groupId=DemoGroupId, version=DemoVersion), description=Check if Maven POM exists.)
+Result(buildTime=Mon May 08 12:30:42 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework, success=true, specificReason=SUCCESS, pomInfo=null, description=maven validation)
+Result(buildTime=Mon May 08 12:30:52 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework, success=true, specificReason=SUCCESS, pomInfo=null, description=maven compile)
+Result(buildTime=Mon May 08 12:31:07 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework, success=false, specificReason=TEST_FAILED, pomInfo=null, description=maven test)
+ID: 1158154002
+Result(buildTime=Mon May 08 12:30:33 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1158154002, success=true, specificReason=SUCCESS, pomInfo=PomInfo(artifactId=DemoArtifactId, groupId=DemoGroupId, version=DemoVersion), description=Check if building path exists.)
+Result(buildTime=Mon May 08 12:30:33 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1158154002, success=false, specificReason=MAVEN_POM_NOT_FOUND, pomInfo=PomInfo(artifactId=DemoArtifactId, groupId=DemoGroupId, version=DemoVersion), description=Check if Maven POM exists.)
+Result(buildTime=Mon May 08 12:30:42 PDT 2017, path=/Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1158154002, success=false, specificReason=CONFIG_ILLEGAL, pomInfo=null, description=maven validation)
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 51.165 sec - in com.coding.build.test.BuilderTest
+Running com.coding.build.test.ParserJsonImplTest
+/Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/build/src/main/resources/project/config/group17.json
+Checking jsonFile: /Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/build/src/main/resources/project/config/group17.json
+Valid group: group17.json
+group17.json
+ID: 1282579502 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502
+ID: 1204187480 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework
+ID: 1158154002 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1158154002
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in com.coding.build.test.ParserJsonImplTest
+Running com.coding.build.test.ValidatorTest
+/Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/build/src/main/resources/project/config/group17.json
+Checking jsonFile: /Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/build/src/main/resources/project/config/group17.json
+Valid group: group17.json
+setting up validation option factory...
+number of groups: 1
+group17.json
+ID: 1282579502 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502
+ID: 1204187480 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework
+ID: 1158154002 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1158154002
+
+valid group: group17.json
+valid member: ID: 1282579502 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1282579502
+valid member: ID: 1204187480 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1204187480/code/homework
+valid member: ID: 1158154002 Build Path: /Users/erlisuo/Documents/workspace/CodeRising_2017/coding2017/group17/1158154002
+time elapsed: 14
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec - in com.coding.build.test.ValidatorTest
+
+Results :
+
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building web 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ web ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ web ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/web/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ web ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ web ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/web/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.18.1:test (default-test) @ web ---
+[INFO] Surefire report directory: /Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/web/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+12:31:36,130 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+12:31:36,131 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+12:31:36,131 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [file:/Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/build/target/classes/logback.xml]
+12:31:36,133 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs multiple times on the classpath.
+12:31:36,133 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [file:/Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/build/target/classes/logback.xml]
+12:31:36,133 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [file:/Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/analysis/target/classes/logback.xml]
+12:31:36,375 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+12:31:36,384 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Will scan for changes in [file:/Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/build/target/classes/logback.xml] 
+12:31:36,384 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeTask scanning period to 30 seconds
+12:31:36,412 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+12:31:36,418 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+12:31:36,548 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+12:31:36,551 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [DAY_ROLLING_FILE]
+12:31:36,562 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1875308878 - No compression will be used
+12:31:36,564 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1875308878 - Will use the pattern /tmp/log/build-analysis/day/build.%d{yyyy-MM-dd}.log for the active file
+12:31:36,569 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern '/tmp/log/build-analysis/day/build.%d{yyyy-MM-dd}.log'.
+12:31:36,569 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+12:31:36,573 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Sun May 07 17:53:45 PDT 2017
+12:31:36,577 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[DAY_ROLLING_FILE] - Active log file name: /tmp/log/build-analysis/build.log
+12:31:36,577 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[DAY_ROLLING_FILE] - File property is set to [/tmp/log/build-analysis/build.log]
+12:31:36,578 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+12:31:36,578 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [DAY_ROLLING_FILE_ERROR]
+12:31:36,580 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1445157774 - No compression will be used
+12:31:36,581 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1445157774 - Will use the pattern /tmp/log/build-analysis/day/build.error.%d{yyyy-MM-dd}.log for the active file
+12:31:36,582 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd' from file name pattern '/tmp/log/build-analysis/day/build.error.%d{yyyy-MM-dd}.log'.
+12:31:36,582 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at midnight.
+12:31:36,583 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Sun May 07 17:53:45 PDT 2017
+12:31:36,584 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[DAY_ROLLING_FILE_ERROR] - Active log file name: /tmp/log/build-analysis/build.error.log
+12:31:36,584 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[DAY_ROLLING_FILE_ERROR] - File property is set to [/tmp/log/build-analysis/build.error.log]
+12:31:36,585 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+12:31:36,585 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [HOUR_ROLLING_FILE]
+12:31:36,586 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@909295153 - No compression will be used
+12:31:36,586 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@909295153 - Will use the pattern /tmp/log/build-analysis/hour/build.%d{yyyy-MM-dd_HH}.log for the active file
+12:31:36,587 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd_HH' from file name pattern '/tmp/log/build-analysis/hour/build.%d{yyyy-MM-dd_HH}.log'.
+12:31:36,587 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at the top of every hour.
+12:31:36,587 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Mon May 08 12:31:36 PDT 2017
+12:31:36,588 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[HOUR_ROLLING_FILE] - Active log file name: /tmp/log/build-analysis/hour/build.2017-05-08_12.log
+12:31:36,588 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[HOUR_ROLLING_FILE] - File property is set to [null]
+12:31:36,588 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.rolling.RollingFileAppender]
+12:31:36,588 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [HOUR_ROLLING_FILE_ERROR]
+12:31:36,589 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1522311648 - No compression will be used
+12:31:36,589 |-INFO in c.q.l.core.rolling.TimeBasedRollingPolicy@1522311648 - Will use the pattern /tmp/log/build-analysis/hour/build.error.%d{yyyy-MM-dd_HH}.log for the active file
+12:31:36,590 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - The date pattern is 'yyyy-MM-dd_HH' from file name pattern '/tmp/log/build-analysis/hour/build.error.%d{yyyy-MM-dd_HH}.log'.
+12:31:36,590 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Roll-over at the top of every hour.
+12:31:36,590 |-INFO in c.q.l.core.rolling.DefaultTimeBasedFileNamingAndTriggeringPolicy - Setting initial period to Mon May 08 12:31:36 PDT 2017
+12:31:36,592 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[HOUR_ROLLING_FILE_ERROR] - Active log file name: /tmp/log/build-analysis/hour/build.error.2017-05-08_12.log
+12:31:36,592 |-INFO in ch.qos.logback.core.rolling.RollingFileAppender[HOUR_ROLLING_FILE_ERROR] - File property is set to [null]
+12:31:36,592 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to DEBUG
+12:31:36,592 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[ROOT]
+12:31:36,593 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [DAY_ROLLING_FILE] to Logger[ROOT]
+12:31:36,593 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [DAY_ROLLING_FILE_ERROR] to Logger[ROOT]
+12:31:36,593 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [HOUR_ROLLING_FILE] to Logger[ROOT]
+12:31:36,594 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [HOUR_ROLLING_FILE_ERROR] to Logger[ROOT]
+12:31:36,594 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+12:31:36,594 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@2286778 - Registering current configuration as safe fallback point
+
+2017-05-08 12:31:36.918 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.coding.web.controller.MemberAnalysisInfoControllerTest], using SpringBootContextLoader
+2017-05-08 12:31:36.947 INFO  [main] [o.s.test.context.support.AbstractContextLoader] - Could not detect default resource locations for test class [com.coding.web.controller.MemberAnalysisInfoControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2017-05-08 12:31:36.961 INFO  [main] [o.s.t.c.support.AnnotationConfigContextLoaderUtils] - Could not detect default configuration classes for test class [com.coding.web.controller.MemberAnalysisInfoControllerTest]: MemberAnalysisInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2017-05-08 12:31:37.568 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Found @SpringBootConfiguration com.coding.web.Application for test class com.coding.web.controller.MemberAnalysisInfoControllerTest
+2017-05-08 12:31:37.578 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-05-08 12:31:37.661 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+2017-05-08 12:31:37.694 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+2017-05-08 12:31:37.695 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@433d61fb, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5c909414, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4b14c583, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65466a6a, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4ddced80, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1534f01b, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@78e117e3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2ea227af, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4386f16, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@363ee3a2]
+Running com.coding.web.controller.MemberAnalysisInfoControllerTest
+2017-05-08 12:31:37.703 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.coding.web.controller.MemberAnalysisInfoControllerTest], using SpringBootContextLoader
+2017-05-08 12:31:37.705 INFO  [main] [o.s.test.context.support.AbstractContextLoader] - Could not detect default resource locations for test class [com.coding.web.controller.MemberAnalysisInfoControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2017-05-08 12:31:37.705 INFO  [main] [o.s.t.c.support.AnnotationConfigContextLoaderUtils] - Could not detect default configuration classes for test class [com.coding.web.controller.MemberAnalysisInfoControllerTest]: MemberAnalysisInfoControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2017-05-08 12:31:37.713 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Found @SpringBootConfiguration com.coding.web.Application for test class com.coding.web.controller.MemberAnalysisInfoControllerTest
+2017-05-08 12:31:37.721 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2017-05-08 12:31:37.725 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Could not instantiate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+2017-05-08 12:31:37.727 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Could not instantiate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener]. Specify custom listener classes or make the default listener classes (and their required dependencies) available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+2017-05-08 12:31:37.727 INFO  [main] [o.s.b.t.context.SpringBootTestContextBootstrapper] - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@635eaaf1, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5c30a9b0, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1ddf84b8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1139b2f3, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7a69b07, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@5e82df6a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3f197a46, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@636be97c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@50a638b5, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1817d444]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.2.RELEASE)
+
+2017-05-08 12:31:40.192 INFO  [main] [c.c.w.controller.MemberAnalysisInfoControllerTest] - Starting MemberAnalysisInfoControllerTest on erli-suos-mbp.starsolutions.com with PID 2471 (started by erlisuo in /Users/erlisuo/Documents/workspace/CodeRising_2017/build-analysis/web)
+2017-05-08 12:31:40.192 INFO  [main] [c.c.w.controller.MemberAnalysisInfoControllerTest] - No active profile set, falling back to default profiles: default
+2017-05-08 12:31:40.395 INFO  [main] [o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext] - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@b9b00e0: startup date [Mon May 08 12:31:40 PDT 2017]; root of context hierarchy
+2017-05-08 12:31:42.932 INFO  [background-preinit] [org.hibernate.validator.internal.util.Version] - HV000001: Hibernate Validator 5.3.4.Final
+2017-05-08 12:31:45.617 INFO  [main] [o.s.b.c.e.tomcat.TomcatEmbeddedServletContainer] - Tomcat initialized with port(s): 0 (http)
+2017-05-08 12:31:45.745 INFO  [main] [org.apache.catalina.core.StandardService] - Starting service Tomcat
+2017-05-08 12:31:45.747 INFO  [main] [org.apache.catalina.core.StandardEngine] - Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-05-08 12:31:46.316 INFO  [localhost-startStop-1] [o.a.c.c.C.[.[localhost].[/build-analysis/api]] - Initializing Spring embedded WebApplicationContext
+2017-05-08 12:31:46.317 INFO  [localhost-startStop-1] [org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 5922 ms
+2017-05-08 12:31:46.549 INFO  [localhost-startStop-1] [o.s.boot.web.servlet.ServletRegistrationBean] - Mapping servlet: 'dispatcherServlet' to [/]
+2017-05-08 12:31:46.587 INFO  [localhost-startStop-1] [o.s.boot.web.servlet.FilterRegistrationBean] - Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-05-08 12:31:46.588 INFO  [localhost-startStop-1] [o.s.boot.web.servlet.FilterRegistrationBean] - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-05-08 12:31:46.588 INFO  [localhost-startStop-1] [o.s.boot.web.servlet.FilterRegistrationBean] - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-05-08 12:31:46.589 INFO  [localhost-startStop-1] [o.s.boot.web.servlet.FilterRegistrationBean] - Mapping filter: 'requestContextFilter' to: [/*]
+2017-05-08 12:31:47.413 INFO  [main] [o.s.w.s.m.m.a.RequestMappingHandlerAdapter] - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@b9b00e0: startup date [Mon May 08 12:31:40 PDT 2017]; root of context hierarchy
+2017-05-08 12:31:47.653 INFO  [main] [o.s.w.s.m.m.a.RequestMappingHandlerMapping] - Mapped "{[/memberAnalysisInfo/{id}]}" onto public java.lang.Object com.coding.web.controller.MemberAnalysisInfoController.findOne(java.lang.String)
+2017-05-08 12:31:47.660 INFO  [main] [o.s.w.s.m.m.a.RequestMappingHandlerMapping] - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-05-08 12:31:47.661 INFO  [main] [o.s.w.s.m.m.a.RequestMappingHandlerMapping] - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-05-08 12:31:47.738 INFO  [main] [o.s.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-08 12:31:47.738 INFO  [main] [o.s.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-08 12:31:47.827 INFO  [main] [o.s.web.servlet.handler.SimpleUrlHandlerMapping] - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-08 12:31:48.135 INFO  [main] [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-auto-1"]
+2017-05-08 12:31:48.209 INFO  [main] [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler [http-nio-auto-1]
+2017-05-08 12:31:48.284 INFO  [main] [org.apache.tomcat.util.net.NioSelectorPool] - Using a shared selector for servlet write/read
+2017-05-08 12:31:48.334 INFO  [main] [o.s.b.c.e.tomcat.TomcatEmbeddedServletContainer] - Tomcat started on port(s): 55280 (http)
+2017-05-08 12:31:48.358 INFO  [main] [c.c.w.controller.MemberAnalysisInfoControllerTest] - Started MemberAnalysisInfoControllerTest in 10.26 seconds (JVM running for 12.73)
+2017-05-08 12:31:49.208 INFO  [http-nio-auto-1-exec-1] [o.a.c.c.C.[.[localhost].[/build-analysis/api]] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-05-08 12:31:49.208 INFO  [http-nio-auto-1-exec-1] [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcherServlet': initialization started
+2017-05-08 12:31:49.260 INFO  [http-nio-auto-1-exec-1] [org.springframework.web.servlet.DispatcherServlet] - FrameworkServlet 'dispatcherServlet': initialization completed in 52 ms
+2017-05-08 12:31:50.021 INFO  [main] [c.c.w.controller.MemberAnalysisInfoControllerTest] - ret=Ret(code=0, msg=, item={"id":"1204187480","moduleAnalysisInfos":[{"result":{},"mavenTransferState":"SUREFIRE_REPORTS_PLUGIN_USED","surefireReports":{"surefireReportsCountInfo":{"failures":0,"tests":3,"time":0.098,"errors":2,"skipped":0},"testSuiteInfos":[{"testCaseInfos":[{"errorInfos":[{"text":"java.io.FileNotFoundException: class path resource [mock/test-project] cannot be resolved to URL because it does not exist\n\tat org.springframework.core.io.ClassPathResource.getURL(ClassPathResource.java:187)\n\tat org.springframework.core.io.AbstractFileResolvingResource.getFile(AbstractFileResolvingResource.java:48)\n\tat com.coding.analysis.analysis.AnalysisImplTest.analysis(AnalysisImplTest.java:39)","message":"class path resource [mock/test-project] cannot be resolved to URL because it does not exist","type":"java.io.FileNotFoundException"}],"name":"analysis","className":"com.coding.analysis.analysis.AnalysisImplTest","time":0.032}],"failures":0,"tests":1,"propertyInfos":[{"name":"idea.version","value":"2016.3.4"},{"name":"java.runtime.name","value":"Java(TM) SE Runtime Environment"},{"name":"sun.boot.library.path","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/amd64"},{"name":"java.vm.version","value":"25.73-b02"},{"name":"java.vm.vendor","value":"Oracle Corporation"},{"name":"maven.multiModuleProjectDirectory","value":"/home/luoziyihao/Works/OPEN_SOURCE/build-analysis"},{"name":"java.vendor.url","value":"http://java.oracle.com/"},{"name":"path.separator","value":":"},{"name":"guice.disable.misplaced.annotation.check","value":"true"},{"name":"java.vm.name","value":"Java HotSpot(TM) 64-Bit Server VM"},{"name":"file.encoding.pkg","value":"sun.io"},{"name":"idea.launcher.port","value":"7532"},{"name":"user.country","value":"US"},{"name":"sun.java.launcher","value":"SUN_STANDARD"},{"name":"sun.os.patch.level","value":"unknown"},{"name":"java.vm.specification.name","value":"Java Virtual Machine Specification"},{"name":"user.dir","value":"/home/luoziyihao/Works/OPEN_SOURCE/build-analysis"},{"name":"java.runtime.version","value":"1.8.0_73-b02"},{"name":"java.awt.graphicsenv","value":"sun.awt.X11GraphicsEnvironment"},{"name":"java.endorsed.dirs","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/endorsed"},{"name":"os.arch","value":"amd64"},{"name":"java.io.tmpdir","value":"/tmp"},{"name":"line.separator","value":"\n"},{"name":"java.vm.specification.vendor","value":"Oracle Corporation"},{"name":"os.name","value":"Linux"},{"name":"classworlds.conf","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3/bin/m2.conf"},{"name":"sun.jnu.encoding","value":"UTF-8"},{"name":"java.library.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/bin::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"},{"name":"java.specification.name","value":"Java Platform API Specification"},{"name":"java.class.version","value":"52.0"},{"name":"sun.management.compiler","value":"HotSpot 64-Bit Tiered Compilers"},{"name":"os.version","value":"3.13.0-116-generic"},{"name":"user.home","value":"/home/luoziyihao"},{"name":"user.timezone","value":"Asia/Shanghai"},{"name":"java.awt.printerjob","value":"sun.print.PSPrinterJob"},{"name":"java.specification.version","value":"1.8"},{"name":"idea.launcher.bin.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/bin"},{"name":"file.encoding","value":"UTF-8"},{"name":"user.name","value":"luoziyihao"},{"name":"java.class.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3/boot/plexus-classworlds-2.5.2.jar:/usr/local/share/ide/idea/idea-IU-163.12024.16/lib/idea_rt.jar"},{"name":"java.vm.specification.version","value":"1.8"},{"name":"sun.arch.data.model","value":"64"},{"name":"java.home","value":"/usr/local/share/jvm/jdk1.8.0_73/jre"},{"name":"sun.java.command","value":"com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=2016.3.4 clean package"},{"name":"java.specification.vendor","value":"Oracle Corporation"},{"name":"user.language","value":"en"},{"name":"awt.toolkit","value":"sun.awt.X11.XToolkit"},{"name":"java.vm.info","value":"mixed mode"},{"name":"java.version","value":"1.8.0_73"},{"name":"java.ext.dirs","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/ext:/usr/java/packages/lib/ext"},{"name":"securerandom.source","value":"file:/dev/./urandom"},{"name":"sun.boot.class.path","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/resources.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/rt.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/sunrsasign.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jsse.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jce.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/charsets.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jfr.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/classes"},{"name":"java.vendor","value":"Oracle Corporation"},{"name":"maven.home","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3"},{"name":"file.separator","value":"/"},{"name":"java.vendor.url.bug","value":"http://bugreport.sun.com/bugreport/"},{"name":"sun.cpu.endian","value":"little"},{"name":"sun.io.unicode.encoding","value":"UnicodeLittle"},{"name":"sun.desktop","value":"gnome"},{"name":"sun.cpu.isalist","value":""}],"name":"com.coding.analysis.analysis.AnalysisImplTest","time":0.032,"errors":1,"skipped":0},{"testCaseInfos":[{"errorInfos":[{"text":"java.io.FileNotFoundException: class path resource [mock/test-project/target/surefire-reports/TEST-com.coding.analysis.analysis.AnalysisImplTest.xml] cannot be resolved to URL because it does not exist\n\tat org.springframework.core.io.ClassPathResource.getURL(ClassPathResource.java:187)\n\tat org.springframework.core.io.AbstractFileResolvingResource.getFile(AbstractFileResolvingResource.java:48)\n\tat com.coding.analysis.parser.TestsuiteParserImplTest.parse(TestsuiteParserImplTest.java:21)","message":"class path resource [mock/test-project/target/surefire-reports/TEST-com.coding.analysis.analysis.AnalysisImplTest.xml] cannot be resolved to URL because it does not exist","type":"java.io.FileNotFoundException"}],"name":"parse","className":"com.coding.analysis.parser.TestsuiteParserImplTest","time":0.06}],"failures":0,"tests":1,"propertyInfos":[{"name":"idea.version","value":"2016.3.4"},{"name":"java.runtime.name","value":"Java(TM) SE Runtime Environment"},{"name":"sun.boot.library.path","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/amd64"},{"name":"java.vm.version","value":"25.73-b02"},{"name":"java.vm.vendor","value":"Oracle Corporation"},{"name":"maven.multiModuleProjectDirectory","value":"/home/luoziyihao/Works/OPEN_SOURCE/build-analysis"},{"name":"java.vendor.url","value":"http://java.oracle.com/"},{"name":"path.separator","value":":"},{"name":"guice.disable.misplaced.annotation.check","value":"true"},{"name":"java.vm.name","value":"Java HotSpot(TM) 64-Bit Server VM"},{"name":"file.encoding.pkg","value":"sun.io"},{"name":"idea.launcher.port","value":"7532"},{"name":"user.country","value":"US"},{"name":"sun.java.launcher","value":"SUN_STANDARD"},{"name":"sun.os.patch.level","value":"unknown"},{"name":"java.vm.specification.name","value":"Java Virtual Machine Specification"},{"name":"user.dir","value":"/home/luoziyihao/Works/OPEN_SOURCE/build-analysis"},{"name":"java.runtime.version","value":"1.8.0_73-b02"},{"name":"java.awt.graphicsenv","value":"sun.awt.X11GraphicsEnvironment"},{"name":"java.endorsed.dirs","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/endorsed"},{"name":"os.arch","value":"amd64"},{"name":"java.io.tmpdir","value":"/tmp"},{"name":"line.separator","value":"\n"},{"name":"java.vm.specification.vendor","value":"Oracle Corporation"},{"name":"os.name","value":"Linux"},{"name":"classworlds.conf","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3/bin/m2.conf"},{"name":"sun.jnu.encoding","value":"UTF-8"},{"name":"java.library.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/bin::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"},{"name":"java.specification.name","value":"Java Platform API Specification"},{"name":"java.class.version","value":"52.0"},{"name":"sun.management.compiler","value":"HotSpot 64-Bit Tiered Compilers"},{"name":"os.version","value":"3.13.0-116-generic"},{"name":"user.home","value":"/home/luoziyihao"},{"name":"user.timezone","value":"Asia/Shanghai"},{"name":"java.awt.printerjob","value":"sun.print.PSPrinterJob"},{"name":"java.specification.version","value":"1.8"},{"name":"idea.launcher.bin.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/bin"},{"name":"file.encoding","value":"UTF-8"},{"name":"user.name","value":"luoziyihao"},{"name":"java.class.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3/boot/plexus-classworlds-2.5.2.jar:/usr/local/share/ide/idea/idea-IU-163.12024.16/lib/idea_rt.jar"},{"name":"java.vm.specification.version","value":"1.8"},{"name":"sun.arch.data.model","value":"64"},{"name":"java.home","value":"/usr/local/share/jvm/jdk1.8.0_73/jre"},{"name":"sun.java.command","value":"com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=2016.3.4 clean package"},{"name":"java.specification.vendor","value":"Oracle Corporation"},{"name":"user.language","value":"en"},{"name":"awt.toolkit","value":"sun.awt.X11.XToolkit"},{"name":"java.vm.info","value":"mixed mode"},{"name":"java.version","value":"1.8.0_73"},{"name":"java.ext.dirs","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/ext:/usr/java/packages/lib/ext"},{"name":"securerandom.source","value":"file:/dev/./urandom"},{"name":"sun.boot.class.path","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/resources.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/rt.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/sunrsasign.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jsse.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jce.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/charsets.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jfr.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/classes"},{"name":"java.vendor","value":"Oracle Corporation"},{"name":"maven.home","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3"},{"name":"file.separator","value":"/"},{"name":"java.vendor.url.bug","value":"http://bugreport.sun.com/bugreport/"},{"name":"sun.cpu.endian","value":"little"},{"name":"sun.io.unicode.encoding","value":"UnicodeLittle"},{"name":"sun.desktop","value":"gnome"},{"name":"sun.cpu.isalist","value":""}],"name":"com.coding.analysis.parser.TestsuiteParserImplTest","time":0.06,"errors":1,"skipped":0},{"testCaseInfos":[{"name":"testMapGet","className":"com.coding.java.MapTest","time":0.006}],"failures":0,"tests":1,"propertyInfos":[{"name":"idea.version","value":"2016.3.4"},{"name":"java.runtime.name","value":"Java(TM) SE Runtime Environment"},{"name":"sun.boot.library.path","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/amd64"},{"name":"java.vm.version","value":"25.73-b02"},{"name":"java.vm.vendor","value":"Oracle Corporation"},{"name":"maven.multiModuleProjectDirectory","value":"/home/luoziyihao/Works/OPEN_SOURCE/build-analysis"},{"name":"java.vendor.url","value":"http://java.oracle.com/"},{"name":"path.separator","value":":"},{"name":"guice.disable.misplaced.annotation.check","value":"true"},{"name":"java.vm.name","value":"Java HotSpot(TM) 64-Bit Server VM"},{"name":"file.encoding.pkg","value":"sun.io"},{"name":"idea.launcher.port","value":"7532"},{"name":"user.country","value":"US"},{"name":"sun.java.launcher","value":"SUN_STANDARD"},{"name":"sun.os.patch.level","value":"unknown"},{"name":"java.vm.specification.name","value":"Java Virtual Machine Specification"},{"name":"user.dir","value":"/home/luoziyihao/Works/OPEN_SOURCE/build-analysis"},{"name":"java.runtime.version","value":"1.8.0_73-b02"},{"name":"java.awt.graphicsenv","value":"sun.awt.X11GraphicsEnvironment"},{"name":"java.endorsed.dirs","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/endorsed"},{"name":"os.arch","value":"amd64"},{"name":"java.io.tmpdir","value":"/tmp"},{"name":"line.separator","value":"\n"},{"name":"java.vm.specification.vendor","value":"Oracle Corporation"},{"name":"os.name","value":"Linux"},{"name":"classworlds.conf","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3/bin/m2.conf"},{"name":"sun.jnu.encoding","value":"UTF-8"},{"name":"java.library.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/bin::/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"},{"name":"java.specification.name","value":"Java Platform API Specification"},{"name":"java.class.version","value":"52.0"},{"name":"sun.management.compiler","value":"HotSpot 64-Bit Tiered Compilers"},{"name":"os.version","value":"3.13.0-116-generic"},{"name":"user.home","value":"/home/luoziyihao"},{"name":"user.timezone","value":"Asia/Shanghai"},{"name":"java.awt.printerjob","value":"sun.print.PSPrinterJob"},{"name":"java.specification.version","value":"1.8"},{"name":"idea.launcher.bin.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/bin"},{"name":"file.encoding","value":"UTF-8"},{"name":"user.name","value":"luoziyihao"},{"name":"java.class.path","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3/boot/plexus-classworlds-2.5.2.jar:/usr/local/share/ide/idea/idea-IU-163.12024.16/lib/idea_rt.jar"},{"name":"java.vm.specification.version","value":"1.8"},{"name":"sun.arch.data.model","value":"64"},{"name":"java.home","value":"/usr/local/share/jvm/jdk1.8.0_73/jre"},{"name":"sun.java.command","value":"com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=2016.3.4 clean package"},{"name":"java.specification.vendor","value":"Oracle Corporation"},{"name":"user.language","value":"en"},{"name":"awt.toolkit","value":"sun.awt.X11.XToolkit"},{"name":"java.vm.info","value":"mixed mode"},{"name":"java.version","value":"1.8.0_73"},{"name":"java.ext.dirs","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/ext:/usr/java/packages/lib/ext"},{"name":"securerandom.source","value":"file:/dev/./urandom"},{"name":"sun.boot.class.path","value":"/usr/local/share/jvm/jdk1.8.0_73/jre/lib/resources.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/rt.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/sunrsasign.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jsse.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jce.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/charsets.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/lib/jfr.jar:/usr/local/share/jvm/jdk1.8.0_73/jre/classes"},{"name":"java.vendor","value":"Oracle Corporation"},{"name":"maven.home","value":"/usr/local/share/ide/idea/idea-IU-163.12024.16/plugins/maven/lib/maven3"},{"name":"file.separator","value":"/"},{"name":"java.vendor.url.bug","value":"http://bugreport.sun.com/bugreport/"},{"name":"sun.cpu.endian","value":"little"},{"name":"sun.io.unicode.encoding","value":"UnicodeLittle"},{"name":"sun.desktop","value":"gnome"},{"name":"sun.cpu.isalist","value":""}],"name":"com.coding.java.MapTest","time":0.006,"errors":0,"skipped":0}]},"mavenBuildState":"SUCCESS"}]})
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.332 sec - in com.coding.web.controller.MemberAnalysisInfoControllerTest
+2017-05-08 12:31:50.036 INFO  [Thread-4] [o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext] - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@b9b00e0: startup date [Mon May 08 12:31:40 PDT 2017]; root of context hierarchy
+
+Results :
+
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] build-analysis ..................................... SUCCESS [  0.004 s]
+[INFO] docs ............................................... SUCCESS [  6.331 s]
+[INFO] common ............................................. SUCCESS [  5.703 s]
+[INFO] analysis ........................................... SUCCESS [  5.537 s]
+[INFO] builder ............................................ SUCCESS [ 55.363 s]
+[INFO] web ................................................ SUCCESS [ 26.022 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 01:40 min
+[INFO] Finished at: 2017-05-08T12:31:50-07:00
+[INFO] Final Memory: 41M/275M
+[INFO] ------------------------------------------------------------------------

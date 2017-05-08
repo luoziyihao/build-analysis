@@ -29,14 +29,13 @@ public class ExecutorImpl implements Executor{
 
 	private List<ExecutionCommand> allCommands = null;
 	private Map<Member, ExecutionResult> executionResults = null;
-	Invoker invoker = null;
+	
 	
 	public ExecutorImpl(){
 		mavenHomeDir = new File(BuilderConfiguration.maven_home_path);
 		allCommands = new LinkedList<>();
 		executionResults = new HashMap<>();
-		invoker = new DefaultInvoker();
-		invoker.setMavenHome(mavenHomeDir);
+		
 		prepareCommands();
 	}
 	
@@ -47,7 +46,7 @@ public class ExecutorImpl implements Executor{
 			result.phase(BuildPhase.VALIDATION);
 			boolean success = process(member, VALIDATION);
 			result.success(success);
-			recordResult(member, result.phase(), success);
+			recordResult(member, result.phase(), success, "maven validation");
 			return result;
 		};
 		allCommands.add(validation);
@@ -57,17 +56,17 @@ public class ExecutorImpl implements Executor{
 			result.phase(BuildPhase.DEPENDENCY);
 			boolean success = process(member, Executor.DEPENDENCY);
 			result.success(success);
-			recordResult(member, result.phase(), success);
+			recordResult(member, result.phase(), success, "maven dependency check");
 			return result;
 		};
-		allCommands.add(dependencyCheck);
+		//allCommands.add(dependencyCheck);
 		ExecutionCommand compile = member ->{
 			ExecutionResult result = new ExecutionResult();
 			result.member(member);
 			result.phase(BuildPhase.COMPILE);
 			boolean success = process(member, Executor.COMPILE);
 			result.success(success);
-			recordResult(member, result.phase(), success);
+			recordResult(member, result.phase(), success, "maven compile");
 			return result;
 		};
 		allCommands.add(compile);
@@ -77,21 +76,30 @@ public class ExecutorImpl implements Executor{
 			result.phase(BuildPhase.TEST_COMPILE);
 			boolean success = process(member, Executor.TEST_COMPILE);
 			result.success(success);
-			recordResult(member, result.phase(), success);
+			recordResult(member, result.phase(), success, "maven test compile");
 			return result;
 		};
-		allCommands.add(compileTest);
+		//allCommands.add(compileTest);
 		ExecutionCommand test = member ->{
 			ExecutionResult result = new ExecutionResult();
 			result.member(member);
 			result.phase(BuildPhase.TEST);
 			boolean success = process(member, Executor.TEST);
 			result.success(success);
-			recordResult(member, result.phase(), success);
+			recordResult(member, result.phase(), success, "maven test");
 			return result;
 		};
 		allCommands.add(test);
-		 
+		ExecutionCommand surefireReport = member ->{
+			ExecutionResult result = new ExecutionResult();
+			result.member(member);
+			result.phase(BuildPhase.REPORT);
+			boolean success = process(member, Executor.REPORT);
+			result.success(success);
+			recordResult(member, result.phase(), success, "maven surefireReport");
+			return result;
+		};
+		allCommands.add(surefireReport);
 	}
 	
 	public boolean process(Member m, String commandString){
@@ -106,6 +114,8 @@ public class ExecutorImpl implements Executor{
 		request.setGoals( Collections.singletonList( commandString ) );
 		InvocationResult result;
 		try {
+			Invoker invoker = new DefaultInvoker();
+			invoker.setMavenHome(mavenHomeDir);
 			result = invoker.execute( request );
 			
 			if(result.getExitCode() != 0 ){
@@ -127,7 +137,7 @@ public class ExecutorImpl implements Executor{
 		}
 	}
 	
-	private void recordResult(Member m, BuildPhase phase, boolean success){
+	private void recordResult(Member m, BuildPhase phase, boolean success, String description){
 //		Result result = new Result();
 //		result.buildTime(new Date());
 //		result.path(m.buildPath);
@@ -139,7 +149,7 @@ public class ExecutorImpl implements Executor{
 			reason = ExecutorTool.mapBuildPhaseToFailedResultMvnBuildState(phase);
 		}
 //		result.success(success);
-		BuildResult.getInstance().addResultEntry(m.id, m.buildPath, success, reason, new Date(), m.getPom());
+		BuildResult.getInstance().addResultEntry(m.id, m.buildPath, success, reason, new Date(), m.getPom(), description);
 	}
 	
 //	public boolean process(Group target) throws MavenInvocationException, FileNotFoundException {
@@ -167,16 +177,27 @@ public class ExecutorImpl implements Executor{
 	@Override
 	public void process(Group target) {//throws MavenInvocationException, FileNotFoundException {
 		
-		allCommands.forEach(cmd -> {
-			target.getMembers().forEach(m->{
-				if(executionResults.get(m) == null || executionResults.get(m).success()){
+		allCommands/*.parallelStream()*/.forEach(cmd -> {
+			target.getMembers().parallelStream().forEach(m->{
+				if(executionResults.get(m) == null || (/*executionResults.get(m).success() &&*/ ! hasFailedCase(m))){
 					ExecutionResult r = cmd.execute(m);
 					executionResults.put(m, r);
 				}
 			});	
 		});
-		
-		
+	}
+	
+	private boolean hasFailedCase(Member m){
+		List<Result> list =	BuildResult.getInstance().getResult(m.id);
+		if(list != null){
+			for(Result r : list){
+				if(! r.success()){
+					System.out.println(m + " has failed case.");
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package com.coding.common.build;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class BuildResult {
 	
@@ -16,7 +17,23 @@ public class BuildResult {
 	}
 	//if no other place is using the buildResult instance, i will change it to private later.
 	public BuildResult(){
-		buildResultMapping = new HashMap<>();
+		buildResultMapping = new ConcurrentHashMap<>();
+	}
+	
+	public void addResultEntry(String id, String path, boolean success, SpecificReason reason, Date buildTime, PomInfo pomInfo, String description){
+		
+		Result newResult = new Result();
+		newResult.success(success);
+		newResult.specificReason(reason);
+		newResult.path(path);
+		newResult.buildTime(buildTime);
+		newResult.pomInfo(pomInfo);
+		newResult.description(description);
+		if(buildResultMapping.get(id) == null){
+			List<Result> results = new LinkedList<>();
+			buildResultMapping.put(id, results);
+		}
+		buildResultMapping.get(id).add(newResult);
 	}
 	
 	public void addResultEntry(String id, String path, boolean success, SpecificReason reason, Date buildTime, PomInfo pomInfo){

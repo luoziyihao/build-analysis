@@ -9,4 +9,5 @@ public abstract class ValidationOption {
 	}
 	
 	public abstract ValidationResult check(Member m);
+	public abstract String getDescription();
 }

@@ -2,8 +2,6 @@ package com.coding.build.executor;
 
 import java.io.FileNotFoundException;
 
-import org.apache.maven.shared.invoker.MavenInvocationException;
-
 import com.coding.build.builder.Group;
 
 public interface Executor {
@@ -14,7 +12,8 @@ public interface Executor {
 	public static final String DEPENDENCY = "dependency:copy-dependencies";
 	public static final String TEST_COMPILE = "test-compile";
 	public static final String TEST = "test";
-	public enum BuildPhase {VALIDATION, COMPILE, DEPENDENCY, TEST_COMPILE, TEST};
+	public static final String REPORT="surefire-report:report";
+	public enum BuildPhase {VALIDATION, COMPILE, DEPENDENCY, TEST_COMPILE, TEST, REPORT};
 	public void process(Group target);//throws MavenInvocationException, FileNotFoundException;
 	public void setMavenHome(String homePath) throws FileNotFoundException;
 }

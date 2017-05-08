@@ -13,4 +13,5 @@ public class Result {
 	private boolean success = false;
 	private SpecificReason specificReason;
 	private PomInfo pomInfo;
+	private String description = "No Additional Description";
 }

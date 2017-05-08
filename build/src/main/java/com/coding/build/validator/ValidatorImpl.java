@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.temporal.Temporal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,8 @@ import org.assertj.core.data.MapEntry;
 
 import com.coding.build.builder.Group;
 import com.coding.build.builder.Member;
+import com.coding.common.build.BuildResult;
+import com.coding.common.build.PomInfo;
 
 public class ValidatorImpl implements Validator{
 
@@ -55,6 +58,7 @@ public class ValidatorImpl implements Validator{
 //				
 //			});
 //		});
+		BuildResult br = BuildResult.getInstance();
 		Instant start = Instant.now();
 		//LocalDateTime start  = LocalDateTime.now();
 		groups.stream().filter(g->g!=null).forEach(group ->{
@@ -64,13 +68,17 @@ public class ValidatorImpl implements Validator{
 				System.out.println("valid member: " + member);
 				ValidationResult result = null;
 				for(int i = 0; i< validationItems.size(); i++){
-					result = validationItems.get(i).check(member);
+					ValidationOption option = validationItems.get(i);
+					result = option.check(member);
+					PomInfo pomInfo = new PomInfo(); //value not set, to be complete
+					br.addResultEntry(member.getId(), member.getBuildPath(), result.isValid(), result.reason(), new Date(), pomInfo, option.getDescription());
 					if(! result.isValid){
 						break;
 					}
 				}
 				//System.out.println("member: " + member + " result: " + result);
 				memberResultMapping.put(member, result);
+				
 			});
 			vResults.put(group, memberResultMapping);
 		});

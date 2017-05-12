@@ -43,7 +43,7 @@ public class ValidationOptionFactoryImpl implements ValidationOptionFactory{
 			Path p = Paths.get(m.buildPath);		
 			try {
 				List<Path> pathes = Files.list(p).filter(path -> path.getFileName().toString().toLowerCase().equals("pom.xml")).collect(Collectors.toList());
-				if(pathes.size() == 0) return new ValidationResult(false, SpecificReason.MAVEN_POM_NOT_FOUND);
+				if(pathes.size() == 0) return new ValidationResult(false, SpecificReason.MAVEN_VALIDATION_ERROR);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

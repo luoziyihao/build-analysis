@@ -8,17 +8,17 @@ public class ExecutorTool {
 	public static SpecificReason mapBuildPhaseToFailedResultMvnBuildState(BuildPhase phase){
 		switch(phase){
 		case VALIDATION:
-			return SpecificReason.CONFIG_ILLEGAL;
-		case DEPENDENCY:
-			return SpecificReason.DEPENDENCY_FAILED;
+			return SpecificReason.MAVEN_VALIDATION_ERROR;
+//		case DEPENDENCY:
+//			return SpecificReason.DEPENDENCY_FAILED;
 		case COMPILE:
-			return SpecificReason.COMPILE_FAILED;
-		case TEST_COMPILE:
-			return SpecificReason.TEST_SKIPPED;
-		case TEST:
-			return SpecificReason.TEST_FAILED;
+			return SpecificReason.MAVEN_COMPILE_FAILED;
+//		case TEST_COMPILE:
+//			return SpecificReason.TEST_SKIPPED;
+//		case TEST:
+//			return SpecificReason.TEST_FAILED;
 		default:
-			return SpecificReason.FAILED;	
+			return SpecificReason.INDETERMINATE;	
 		}
 	}
 	

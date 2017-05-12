@@ -2,6 +2,7 @@ package com.coding.build.executor;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,6 +21,7 @@ import com.coding.build.builder.BuilderConfiguration;
 import com.coding.build.builder.Group;
 import com.coding.build.builder.Member;
 import com.coding.common.build.BuildResult;
+import com.coding.common.build.PomInfo;
 import com.coding.common.build.Result;
 import com.coding.common.build.SpecificReason;
 
@@ -89,7 +91,7 @@ public class ExecutorImpl implements Executor{
 			recordResult(member, result.phase(), success, "maven test");
 			return result;
 		};
-		allCommands.add(test);
+		//allCommands.add(test);
 		ExecutionCommand surefireReport = member ->{
 			ExecutionResult result = new ExecutionResult();
 			result.member(member);
@@ -149,7 +151,9 @@ public class ExecutorImpl implements Executor{
 			reason = ExecutorTool.mapBuildPhaseToFailedResultMvnBuildState(phase);
 		}
 //		result.success(success);
-		BuildResult.getInstance().addResultEntry(m.id, m.buildPath, success, reason, new Date(), m.getPom(), description);
+		List<PomInfo> poms = new ArrayList<>();
+		poms.add(m.getPom());//modify later
+		BuildResult.getInstance().setResult(m.id, m.buildPath, success, reason, new Date(), poms, description);
 	}
 	
 //	public boolean process(Group target) throws MavenInvocationException, FileNotFoundException {
@@ -179,26 +183,26 @@ public class ExecutorImpl implements Executor{
 		
 		allCommands/*.parallelStream()*/.forEach(cmd -> {
 			target.getMembers().parallelStream().forEach(m->{
-				if(executionResults.get(m) == null || (/*executionResults.get(m).success() &&*/ ! hasFailedCase(m))){
+				//if(executionResults.get(m) == null || (/*executionResults.get(m).success() &&*/ ! hasFailedCase(m))){
 					ExecutionResult r = cmd.execute(m);
 					executionResults.put(m, r);
-				}
+				//}
 			});	
 		});
 	}
 	
-	private boolean hasFailedCase(Member m){
-		List<Result> list =	BuildResult.getInstance().getResult(m.id);
-		if(list != null){
-			for(Result r : list){
-				if(! r.success()){
-					System.out.println(m + " has failed case.");
-					return true;
-				}
-			}
-		}
-		return false;
-	}
+//	private boolean hasFailedCase(Member m){
+//		List<Result> list =	BuildResult.getInstance().getResult(m.id);
+//		if(list != null){
+//			for(Result r : list){
+//				if(! r.success()){
+//					System.out.println(m + " has failed case.");
+//					return true;
+//				}
+//			}
+//		}
+//		return false;
+//	}
 	
 	@Override
 	public void setMavenHome(String homePath) throws FileNotFoundException  {

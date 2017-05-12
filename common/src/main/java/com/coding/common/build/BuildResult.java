@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class BuildResult {
 	
-	Map<String, List<Result>> buildResultMapping; //qq -> result
+	private Map<String, Result> buildResultMapping; //qq -> result
 	
 	private static BuildResult instance = null;
 	
@@ -15,43 +15,23 @@ public class BuildResult {
 		}
 		return instance;
 	}
-	//if no other place is using the buildResult instance, i will change it to private later.
-	public BuildResult(){
+	
+	private BuildResult(){
 		buildResultMapping = new ConcurrentHashMap<>();
 	}
 	
-	public void addResultEntry(String id, String path, boolean success, SpecificReason reason, Date buildTime, PomInfo pomInfo, String description){
-		
+	public void setResult(String id, String path, boolean success, SpecificReason reason, Date buildTime, List<PomInfo> pomInfos, String description){
 		Result newResult = new Result();
 		newResult.success(success);
 		newResult.specificReason(reason);
 		newResult.path(path);
 		newResult.buildTime(buildTime);
-		newResult.pomInfo(pomInfo);
+		newResult.pomInfos(pomInfos);
 		newResult.description(description);
-		if(buildResultMapping.get(id) == null){
-			List<Result> results = new LinkedList<>();
-			buildResultMapping.put(id, results);
-		}
-		buildResultMapping.get(id).add(newResult);
+		buildResultMapping.put(id, newResult);
 	}
 	
-	public void addResultEntry(String id, String path, boolean success, SpecificReason reason, Date buildTime, PomInfo pomInfo){
-		
-		Result newResult = new Result();
-		newResult.success(success);
-		newResult.specificReason(reason);
-		newResult.path(path);
-		newResult.buildTime(buildTime);
-		newResult.pomInfo(pomInfo);
-		if(buildResultMapping.get(id) == null){
-			List<Result> results = new LinkedList<>();
-			buildResultMapping.put(id, results);
-		}
-		buildResultMapping.get(id).add(newResult);
-	}
-	
-	public List<Result> getResult(String id){
+	public Result getResult(String id){
 		return buildResultMapping.get(id);
 	}
 	
@@ -59,14 +39,14 @@ public class BuildResult {
 		return buildResultMapping.keySet().iterator();
 	}
 
-	public Set<Map.Entry<String, List<Result>>> entrySet(){
-		return buildResultMapping.entrySet();
-	}
-
 	public void dump(){
-		buildResultMapping.forEach((id, l) ->{
+		buildResultMapping.forEach((id, result) ->{
 			System.out.println("ID: " + id);
-			l.forEach(System.out::println);
+			if(Objects.isNull(result)) {
+				System.out.println("Result is NULL");
+			}else{
+				System.out.println("Result: " + result);
+			}
 		});
 	}
 }

@@ -9,4 +9,7 @@ public class PomInfo {
 	private String artifactId="DemoArtifactId";
 	private String groupId="DemoGroupId";
 	private String version="DemoVersion";
+	private String packaging = "DemoPackage";
+	private String name = "DemoName";
+	private String modelVersion = "DemoModelVersion";
 }

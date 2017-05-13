@@ -21,6 +21,7 @@ import com.coding.build.builder.BuilderConfiguration;
 import com.coding.build.builder.BuilderImpl;
 import com.coding.build.builder.Group;
 import com.coding.build.builder.Member;
+import com.coding.common.build.PomInfo;
 import com.coding.common.build.SpecificReason;
 
 public class ParserJsonImpl implements Parser{
@@ -125,7 +126,8 @@ public class ParserJsonImpl implements Parser{
 			String id = memberObj.getString(BuilderConfiguration.ID_TAG);
 			String path = memberObj.getString(BuilderConfiguration.CODE_PATH_TAG);
 			Member newMember = new Member();
-			ParserUtil.searchPoms(BuilderConfiguration.project_root+ File.separatorChar + path);
+			List<PomInfo> poms = ParserUtil.searchPoms(BuilderConfiguration.project_root+ File.separatorChar + path);
+			newMember.setPom(poms);
 			newMember.id = id; newMember.buildPath = BuilderConfiguration.project_root + File.separator+  path;
 			group.addMember(newMember);
 		}

@@ -70,10 +70,7 @@ public class ValidatorImpl implements Validator{
 				for(int i = 0; i< validationItems.size(); i++){
 					ValidationOption option = validationItems.get(i);
 					result = option.check(member);
-					PomInfo pomInfo = new PomInfo(); //value not set, to be complete
-					List<PomInfo> pomInfos = new ArrayList<>();
-					pomInfos.add(pomInfo);
-					br.setResult(member.getId(), member.getBuildPath(), result.isValid(), result.reason(), new Date(), pomInfos, option.getDescription());
+					br.setResult(member.getId(), member.getBuildPath(), result.isValid(), result.reason(), new Date(), member.getPom(), option.getDescription());
 					if(! result.isValid){
 						break;
 					}

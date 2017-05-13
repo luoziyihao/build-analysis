@@ -150,10 +150,7 @@ public class ExecutorImpl implements Executor{
 		else{
 			reason = ExecutorTool.mapBuildPhaseToFailedResultMvnBuildState(phase);
 		}
-//		result.success(success);
-		List<PomInfo> poms = new ArrayList<>();
-		
-		BuildResult.getInstance().setResult(m.id, m.buildPath, success, reason, new Date(), poms, description);
+		BuildResult.getInstance().setResult(m.id, m.buildPath, success, reason, new Date(), m.getPom(), description);
 	}
 	
 //	public boolean process(Group target) throws MavenInvocationException, FileNotFoundException {

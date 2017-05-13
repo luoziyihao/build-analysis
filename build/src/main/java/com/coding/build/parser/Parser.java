@@ -16,5 +16,4 @@ public interface Parser {
 	 * @throws ParserFailException
 	 */
 	public Group parse(String path);
-	public Map<Group, SpecificReason> getFaultyGroups();
 }

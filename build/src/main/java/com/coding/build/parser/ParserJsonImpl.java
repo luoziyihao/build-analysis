@@ -125,12 +125,14 @@ public class ParserJsonImpl implements Parser{
 			String id = memberObj.getString(BuilderConfiguration.ID_TAG);
 			String path = memberObj.getString(BuilderConfiguration.CODE_PATH_TAG);
 			Member newMember = new Member();
+			ParserUtil.searchPoms(BuilderConfiguration.project_root+ File.separatorChar + path);
 			newMember.id = id; newMember.buildPath = BuilderConfiguration.project_root + File.separator+  path;
 			group.addMember(newMember);
 		}
 		
 		return group;
 	}
+	
 	
 	private JSONObject getJsonObject(File file) throws ParserFailException{
 		
@@ -200,9 +202,5 @@ public class ParserJsonImpl implements Parser{
 		
 	}
 
-	@Override
-	public Map<Group, SpecificReason> getFaultyGroups() {
-		return parsingResult;
-	}
 
 }

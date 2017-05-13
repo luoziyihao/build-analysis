@@ -14,10 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.coding.analysis.analysis.Analysis;
-import com.coding.analysis.analysis.AnalysisImpl;
-import com.coding.analysis.parser.ParserImpl;
-import com.coding.analysis.validator.ValidatorImpl;
+
 import com.coding.build.builder.BuildException;
 import com.coding.build.builder.Builder;
 import com.coding.build.builder.BuilderConfiguration;

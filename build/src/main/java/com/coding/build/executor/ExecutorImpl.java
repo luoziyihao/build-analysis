@@ -152,7 +152,7 @@ public class ExecutorImpl implements Executor{
 		}
 //		result.success(success);
 		List<PomInfo> poms = new ArrayList<>();
-		poms.add(m.getPom());//modify later
+		
 		BuildResult.getInstance().setResult(m.id, m.buildPath, success, reason, new Date(), poms, description);
 	}
 	

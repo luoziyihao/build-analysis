@@ -50,7 +50,12 @@ public class ParserUtil {
 		pomInfos.forEach(System.out::println);
 		return pomInfos;
 	}
-	
+
+	/**
+	 * todo 默认值处理, 从 父pom 里面取值处理
+	 * @param pom
+	 * @return
+	 */
 	public static PomInfo parsePom(String pom){
 		MavenXpp3Reader reader = new MavenXpp3Reader();
 		PomInfo pomInfo = new PomInfo();

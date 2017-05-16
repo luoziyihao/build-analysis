@@ -1,16 +1,11 @@
 package com.coding.analysis.validator;
 
-import com.coding.common.build.BuildResult;
 import com.coding.common.build.Result;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 import strman.Strman;
 
 import java.io.File;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static com.coding.common.util.FileUtils.legalDirectory;
 
@@ -18,51 +13,35 @@ import static com.coding.common.util.FileUtils.legalDirectory;
 public class ValidatorImpl implements Validator {
 
     @Override
-    public AnalysisInput validate(BuildResult buildResult) {
-        Preconditions.checkNotNull(buildResult);
-        return new AnalysisInput()
-                .memberBuildInputs(
-                        buildResult.entrySet()
-                                .stream()
-                                .map(createMemberAnalysisInput())
-                                .collect(Collectors.toList())
-                );
+    public ResultInput validate(Result result) {
+        Preconditions.checkNotNull(result);
+        return createResultInput(result);
+
     }
 
-    private Function<? super Map.Entry<String, List<Result>>, ? extends MemberAnalysisInput> createMemberAnalysisInput() {
-        return entry -> new MemberAnalysisInput()
-                .id(entry.getKey())
-                .resultInputs(
-                        entry.getValue()
-                                .stream()
-                                .map(
-                                        createResultInput()
-                                )
-                                .collect(Collectors.toList())
-                );
-    }
+    private ResultInput createResultInput(Result result) {
+        ResultInput resultInput = new ResultInput().result(result);
+        if (checkNull(result.buildTime(), "buildTime", resultInput)) {
+            log.error("result illegal, buildTime is null");
+            return resultInput;
+        }
 
-    private Function<? super Result, ? extends ResultInput> createResultInput() {
-        return result -> {
-            ResultInput resultInput = new ResultInput().result(result);
-            if (checkNull(result.buildTime(), "buildTime", resultInput)) {
-                log.error("result illegal, buildTime is null");
-                return resultInput;
-            }
+        if (checkNull(result.specificReason(), "specificReason", resultInput)) {
+            log.error("specificReason illegal, specificReason is null");
+            return resultInput;
+        }
+        if (checkNull(result.path(), "path", resultInput)) {
+            log.error("result illegal, path is null");
+            return resultInput;
+        }
+        if (checkArgument(!legalDirectory(new File(result.path()))
+                , "path", resultInput, " is illegal directory", ResultIllegalReason.ILLEGAL_PATH)) {
+            log.error("result illegal, path={}", result.path());
+            return resultInput;
 
-            if (checkNull(result.path(), "path", resultInput)) {
-                log.error("result illegal, path is null");
-                return resultInput;
-            }
-            if (checkArgument(!legalDirectory(new File(result.path()))
-                    , "path", resultInput, " is illegal directory", ResultIllegalReason.ILLEGAL_PATH)) {
-                log.error("result illegal, path={}", result.path());
-                return resultInput;
-
-            }
-            return resultInput
-                    .legal(true);
-        };
+        }
+        return resultInput
+                .legal(true);
     }
 
     private boolean checkNull(Object reference, String field, ResultInput resultInput) {
@@ -83,7 +62,6 @@ public class ValidatorImpl implements Validator {
         }
         return true;
     }
-
 
 
 }

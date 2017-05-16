@@ -13,5 +13,5 @@ public class ResultInput {
     private Result result;
     private boolean legal = false;
     private ResultIllegalReason resultIllegalReason;
-    private String  msg = "";
+    private String msg;
 }

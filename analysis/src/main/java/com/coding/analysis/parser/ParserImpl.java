@@ -1,12 +1,12 @@
 package com.coding.analysis.parser;
 
-import com.coding.analysis.validator.AnalysisInput;
-import com.coding.analysis.validator.MemberAnalysisInput;
-import com.coding.common.analysis.entity.*;
+import com.coding.analysis.validator.ResultInput;
+import com.coding.common.analysis.entity.MemberAnalysisInfo;
+import com.coding.common.analysis.entity.ModuleAnalysisInfo;
 import com.coding.common.analysis.entity.surefire.SurefireReports;
 import com.coding.common.analysis.entity.surefire.SurefireReportsCountInfo;
 import com.coding.common.analysis.entity.surefire.TestSuiteInfo;
-import com.coding.common.build.SpecificReason;
+import com.coding.common.build.PomInfo;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
 import strman.Strman;
@@ -30,84 +30,23 @@ public class ParserImpl implements Parser {
     private TestsuiteParser testSuiteInfoParser = new TestsuiteParserImpl();
 
     @Override
-    public AnalysisResult parse(AnalysisInput analysisInput) {
-        Preconditions.checkNotNull(analysisInput);
-        return new AnalysisResult()
-                .setTestMemberInfos(
-                        analysisInput.memberBuildInputs().stream()
-                                .map(parseMemberAnalysisInput())
-                                .collect(Collectors.toMap(
-                                        MemberAnalysisInfo::getId,
-                                        testMemberInfo -> testMemberInfo
-                                        )
-                                )
-                );
-    }
-
-    private Function<? super MemberAnalysisInput, ? extends MemberAnalysisInfo> parseMemberAnalysisInput() {
-        return memberAnalysisInput -> new MemberAnalysisInfo()
-                .setId(memberAnalysisInput.id())
+    public MemberAnalysisInfo parse(ResultInput resultInput) {
+        Preconditions.checkNotNull(resultInput);
+        MemberAnalysisInfo memberAnalysisInfo = new MemberAnalysisInfo();
+        if (!resultInput.legal()) {
+            log.error("result illegal, resultInput={}", resultInput);
+            throw new IllegalStateException("result illegal");
+        }
+        return memberAnalysisInfo
+                .setResult(resultInput.result())
                 .setModuleAnalysisInfos(
-                        memberAnalysisInput.resultInputs()
+                        resultInput.result().pomInfos()
                                 .stream()
-                                .filter(resultInput -> {
-                                    if (!resultInput.legal()) {
-                                        log.error("result illegal, resultInput={}", resultInput);
-                                        return false;
-                                    }
-                                    return resultInput.result().success();
-                                })
-                                .map(resultInput -> new ModuleAnalysisInfo()
-                                        .setResult(resultInput.result())
-                                        .setMavenTransferState(mapSpecificReasonToMavenTransferState(resultInput.result().specificReason()))
-                                        .setMavenBuildState(mapSpecificReasonToBuildState(resultInput.result().specificReason()))
-                                )
-                                .map(parserResult())
+                                .filter(pomInfo -> PackagingEnum.legal(pomInfo.packaging()))
+                                .map(parserPomInfo())
                                 .collect(Collectors.toList())
 
                 );
-
-
-    }
-
-    private MavenTransferState mapSpecificReasonToMavenTransferState(SpecificReason specificReason) {
-        if (specificReason == null) {
-            return MavenTransferState.MAVEN_UNUSED;
-        }
-        switch (specificReason) {
-            case INVALID_FORMAT:
-            case MAVEN_POM_NOT_FOUND:
-            case NO_SUCH_DIRECTORY:
-            case INVALID_JSON_CONFIG:
-                return MavenTransferState.MAVEN_UNUSED;
-            case CONFIG_ILLEGAL:
-            case COMPILE_FAILED:
-            case TEST_FAILED:
-            case TEST_SKIPPED:
-            case DEPENDENCY_FAILED:
-            case FAILED:
-            default:
-                return MavenTransferState.MAVEN_USED;
-
-        }
-    }
-
-    private MavenBuildState mapSpecificReasonToBuildState(SpecificReason specificReason) {
-        if (specificReason == null) {
-            return MavenBuildState.NEVER_BUILD;
-        }
-        switch (specificReason) {
-            case SUCCESS:
-            case CONFIG_ILLEGAL:
-            case COMPILE_FAILED:
-            case TEST_FAILED:
-            case TEST_SKIPPED:
-            case DEPENDENCY_FAILED:
-            case FAILED:
-                return MavenBuildState.valueOf(specificReason.name());
-            default:
-                return MavenBuildState.NEVER_BUILD;
-        }
     }
 
     private static final String SUREFIRE_REPORTS_PRE = Strman.append(
@@ -119,14 +58,15 @@ public class ParserImpl implements Parser {
     );
 
 
-    private Function<? super ModuleAnalysisInfo, ? extends ModuleAnalysisInfo> parserResult() {
-        return moduleAnalysisInfo -> {
-            final String surefireReportsPath = Strman.append(moduleAnalysisInfo.getResult().path(), SUREFIRE_REPORTS_PRE);
+    private Function<? super PomInfo, ? extends ModuleAnalysisInfo> parserPomInfo() {
+        return pomInfo -> {
+            ModuleAnalysisInfo moduleAnalysisInfo = new ModuleAnalysisInfo();
+            final String surefireReportsPath = Strman.append(pomInfo.path(), SUREFIRE_REPORTS_PRE);
             File surefireReportsDir = new File(surefireReportsPath);
             if (!legalDirectory(surefireReportsDir)) {
-                return moduleAnalysisInfo;
+                log.error("surefireReportsDir illegal, surefireReportsDir={}, pomInfo=", surefireReportsDir, pomInfo);
+                throw new IllegalStateException("surefireReportsDir illegal");
             }
-            moduleAnalysisInfo.setMavenTransferState(MavenTransferState.SUREFIRE_REPORTS_PLUGIN_USED);
             return moduleAnalysisInfo.setSurefireReports(parserSurefireReports(surefireReportsDir));
         };
     }

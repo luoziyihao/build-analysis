@@ -1,8 +1,8 @@
 package com.coding.analysis.validator;
 
-import com.coding.common.build.BuildResult;
+import com.coding.common.build.Result;
 
 public interface Validator {
 
-    AnalysisInput validate(BuildResult buildResult);
+    ResultInput validate(Result result);
 }

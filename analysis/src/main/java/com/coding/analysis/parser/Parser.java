@@ -1,11 +1,11 @@
 package com.coding.analysis.parser;
 
-import com.coding.analysis.validator.AnalysisInput;
-import com.coding.common.analysis.entity.AnalysisResult;
+import com.coding.analysis.validator.ResultInput;
+import com.coding.common.analysis.entity.MemberAnalysisInfo;
 
 /**
  * Created by luoziyihao on 4/12/17.
  */
 public interface Parser {
-    AnalysisResult parse(AnalysisInput analysisInput);
+    MemberAnalysisInfo parse(ResultInput resultInput);
 }

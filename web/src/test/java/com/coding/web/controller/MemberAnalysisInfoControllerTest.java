@@ -36,17 +36,17 @@ public class MemberAnalysisInfoControllerTest {
 
     @Before
     public void before() throws IOException {
-        BuildResult buildResult = new BuildResult();
-        String qq = "1204187480";
-        buildResult.addResultEntry(
-                qq
-                , new ClassPathResource("mock/test-project").getFile().getAbsolutePath()
-                , true
-                , null
-                , new Date()
-                , new PomInfo().artifactId("analysis").groupId("com.coding").version("1.0-SNAPSHOT")
-        );
-        analysis.analysis(buildResult);
+//        BuildResult buildResult = new BuildResult();
+//        String qq = "1204187480";
+//        buildResult.addResultEntry(
+//                qq
+//                , new ClassPathResource("mock/test-project").getFile().getAbsolutePath()
+//                , true
+//                , null
+//                , new Date()
+//                , new PomInfo().artifactId("analysis").groupId("com.coding").version("1.0-SNAPSHOT")
+//        );
+//        analysis.analysis(buildResult);
     }
 
     @Test

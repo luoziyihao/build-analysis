@@ -1,10 +1,13 @@
 package com.coding.analysis.analysis;
 
+import com.coding.common.analysis.entity.MemberAnalysisInfo;
+import com.coding.common.analysis.entity.ModuleAnalysisInfo;
 import com.coding.common.analysis.repository.MemberAnalysisInfoRepository;
 import com.coding.analysis.parser.Parser;
 import com.coding.analysis.validator.Validator;
 import com.coding.common.analysis.entity.AnalysisResult;
 import com.coding.common.build.BuildResult;
+import com.coding.common.build.Result;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -37,15 +40,13 @@ public class AnalysisImpl implements Analysis {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean analysis(BuildResult buildResult) {
+    public MemberAnalysisInfo analysis(Result result) {
         try {
-            AnalysisResult analysisResult = parser.parse(validator.validate(buildResult));
-            memberAnalysisInfoRepository.save(analysisResult.getTestMemberInfos());
-            log.debug("analysisResult={}", analysisResult);
+           return parser.parse(validator.validate(result));
         } catch (Exception e) {
             log.error("analysis error", e);
-            return false;
+
+            throw new IllegalStateException(e);
         }
-        return true;
     }
 }

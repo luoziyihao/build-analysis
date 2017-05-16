@@ -1,6 +1,7 @@
 package com.coding.common.analysis.entity;
 
 import com.coding.common.analysis.entity.surefire.SurefireReports;
+import com.coding.common.build.PomInfo;
 import com.coding.common.build.Result;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -13,8 +14,6 @@ import lombok.experimental.Accessors;
 public class ModuleAnalysisInfo {
 
     private SurefireReports surefireReports;
-    private Result result;
-    private MavenTransferState mavenTransferState;
-    private MavenBuildState mavenBuildState;
 
+    private PomInfo pomInfo;
 }

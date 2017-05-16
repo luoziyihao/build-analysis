@@ -12,4 +12,5 @@ public class PomInfo {
 	private String packaging = "DemoPackage";
 	private String name = "DemoName";
 	private String modelVersion = "DemoModelVersion";
+	private String path;	// pom所在的目录
 }

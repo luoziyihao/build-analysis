@@ -1,9 +1,11 @@
 package com.coding.analysis.analysis;
 
+import com.coding.common.analysis.entity.MemberAnalysisInfo;
 import com.coding.common.analysis.repository.MemberAnalysisInfoRepository;
 import com.coding.analysis.parser.Parser;
 import com.coding.analysis.validator.Validator;
 import com.coding.common.build.BuildResult;
+import com.coding.common.build.Result;
 
 /**
  * Created by luoziyihao on 4/12/17.
@@ -16,15 +18,12 @@ public interface Analysis {
     Analysis setParser(Parser parser);
 
     /**
-     * 拿到所有的 buildResult, 校验准确性
-     * 开始解析 buildResult , 生成 TestMemberInfo
-     * 数据持久化(内存, mongo)
-     * 各种报表
-     *
-     * @param buildResult
+     * 分析单个 result
+     * @param result
+     * @return
      */
-    boolean analysis(BuildResult buildResult);
+    MemberAnalysisInfo analysis(Result result);
 
-    Analysis setMemberAnalysisInfoRepository(MemberAnalysisInfoRepository testMemberInfoRepository);
+    Analysis setMemberAnalysisInfoRepository(MemberAnalysisInfoRepository memberAnalysisInfoRepository);
 
 }

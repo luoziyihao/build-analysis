@@ -6,11 +6,11 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(fluent = true)
 public class PomInfo {
-	private String artifactId="DemoArtifactId";
-	private String groupId="DemoGroupId";
-	private String version="DemoVersion";
-	private String packaging = "DemoPackage";
-	private String name = "DemoName";
-	private String modelVersion = "DemoModelVersion";
+	private String artifactId="";
+	private String groupId="";
+	private String version="";
+	private String packaging = "jar";
+	private String name = "";
+	private String modelVersion = "";
 	private String path;	// pom所在的目录
 }
